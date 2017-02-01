@@ -23,7 +23,7 @@ const getTab = (selectedTab, updateSelectedTab) => tab => (
   </button>
 )
 
-const getTabs = (tabs, selectedTab, updateSelectedTab) => {
+const getNavBar = (tabs, selectedTab, updateSelectedTab) => {
   return (
     <div className="twelve columns nav-bar">
       <div
@@ -39,7 +39,7 @@ const getTabs = (tabs, selectedTab, updateSelectedTab) => {
 
 const NavigationBar = ({ tabs, selectedTab, updateSelectedTab }) => (
   <div className="row">
-    {getTabs(tabs, selectedTab, updateSelectedTab)}
+    {getNavBar(tabs, selectedTab, updateSelectedTab)}
   </div>
 )
 
