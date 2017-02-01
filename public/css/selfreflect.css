@@ -1,0 +1,23 @@
+.nav-button-unselected {
+  border: none;
+}
+
+.nav-bar {
+  border-bottom: 1px solid #555;
+}
+
+.nav-button {
+  margin-bottom: 0;
+  line-height: 36px;
+}
+
+.logoDiv {
+  height: 38px;
+  cursor: pointer;
+}
+
+.logo {
+  height: 30px;
+  margin-top: 4px;
+  background-image: url("../images/selfreflect.png");
+}

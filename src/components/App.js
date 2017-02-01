@@ -1,11 +1,9 @@
 import React from 'react'
 
-import MyContainer from '../containers/MyContainer'
+import NavigationBar from '../containers/NavigationBar'
 
-const App = () => (
+export default () => (
   <div>
-    <MyContainer />
+    <NavigationBar />
   </div>
 )
-
-export default App
