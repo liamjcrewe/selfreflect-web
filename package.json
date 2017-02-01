@@ -5,7 +5,7 @@
   "main": "build.js",
   "scripts": {
     "test": "",
-    "build": "browserify src/main.js -t babelify -t strictify | uglifyjs -c > public/build.js",
+    "build": "NODE_ENV=production browserify src/main.js -t babelify -t strictify | uglifyjs -c > public/build.js",
     "build-dev": "browserify -d src/main.js -t babelify -t strictify -o public/build.js",
     "watch": "watch 'npm run build' src/",
     "watch-dev": "watch 'npm run build-dev' src/"
