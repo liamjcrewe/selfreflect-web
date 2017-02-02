@@ -22,7 +22,7 @@ const loginButton = updateSelectedTab => (
     className="home-button button-primary"
     onClick={() => updateSelectedTab('login')}
   >
-    Login
+    Log in
   </button>
 )
 
