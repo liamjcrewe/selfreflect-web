@@ -7,6 +7,10 @@ export default {
     {
       name: 'login',
       label: 'Log in'
+    },
+    {
+      name: 'register',
+      label: 'Register'
     }
   ],
   loggedIn: [

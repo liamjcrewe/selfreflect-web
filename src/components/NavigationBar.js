@@ -27,18 +27,18 @@ const getNavBar = (tabs, selectedTab, updateSelectedTab) => {
   return (
     <div className="twelve columns nav-bar">
       <div
-        className="two columns logoDiv"
+        className="two columns logo-div"
         onClick={() => updateSelectedTab('home')}
       >
         <div className="logo"></div>
       </div>
-      {map(getTab(selectedTab, updateSelectedTab), tabs)}
+        {map(getTab(selectedTab, updateSelectedTab), tabs)}
     </div>
   )
 }
 
 const NavigationBar = ({ tabs, selectedTab, updateSelectedTab }) => (
-  <div className="row">
+  <div className="row nav-bar-div">
     {getNavBar(tabs, selectedTab, updateSelectedTab)}
   </div>
 )

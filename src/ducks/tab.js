@@ -11,7 +11,7 @@ export const updateSelectedTab = newTab => {
 
 // Reducer
 const initialState = {
-  selectedTab: 'login'
+  selectedTab: 'home'
 }
 
 export default (state = initialState, action) => {
