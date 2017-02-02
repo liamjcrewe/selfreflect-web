@@ -1,0 +1,32 @@
+{
+  "name": "selfreflect-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "",
+    "build": "NODE_ENV=production browserify src/main.js -t babelify -t strictify | uglifyjs -c > public/build.js",
+    "build-dev": "browserify -d src/main.js -t babelify -t strictify -o public/build.js",
+    "watch": "watch 'npm run build' src/",
+    "watch-dev": "watch 'npm run build-dev' src/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "strictify": "^0.2.0",
+    "uglify-js": "^2.6.2",
+    "watch": "^0.18.0"
+  },
+  "dependencies": {
+    "ramda": "^0.23.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  }
+}

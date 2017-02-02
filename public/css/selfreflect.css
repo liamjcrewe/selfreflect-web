@@ -1,0 +1,81 @@
+/* Navigation bar
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.nav-bar-div {
+  height: 39px;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  background: white;
+  border-bottom: 1px solid #555;
+}
+
+.logo-div {
+  height: 38px;
+  cursor: pointer;
+  min-width: 130px;
+}
+
+.logo {
+  height: 30px;
+  margin-top: 4px;
+  background-image: url("../images/selfreflect.png");
+  background-repeat: no-repeat;
+}
+
+.nav-button {
+  width: 120px;
+  margin-bottom: 0;
+  line-height: 36px;
+}
+
+.nav-button-unselected {
+  border: none;
+}
+
+/* 'Home' page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.home {
+  position: relative;
+  height: 100%;
+}
+
+.home-img {
+  display: none;
+}
+
+/* For desktops only */
+@media (min-width: 1000px) and (min-height: 500px){
+  .home-img {
+    display: block;
+    height: 100%;
+  }
+}
+
+.home-content-div {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+}
+
+.home-info-text {
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.home-buttons-div {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.home-button {
+  width: 120px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
