@@ -8,34 +8,7 @@ import EmailInput from './inputs/EmailInput'
 import PasswordInput from './inputs/PasswordInput'
 import ConfirmPasswordInput from './inputs/ConfirmPasswordInput'
 
-const clearButton = (updateEmail, updatePassword, updateConfirm) => (
-  <button className="register-button" onClick={() => {
-      updateEmail('')
-      updatePassword('')
-      updateConfirm('')
-    }}
-  >
-    Clear
-  </button>
-)
-
-const submitMessage = (isLoading, isSubmitted, submitError) => {
-  if (isLoading) {
-    return (
-      <div>
-        Contacting server...
-      </div>
-    )
-  }
-
-  if (isSubmitted) {
-    return (
-      <div className={submitError ? 'error' : 'success'}>
-        {submitError || 'Success!'}
-      </div>
-    )
-  }
-}
+import SubmitMessage from './SubmitMessage'
 
 const allInputsValid = (email, password, confirm) => {
   return validateEmail(email)
@@ -88,7 +61,11 @@ const RegisterForm = ({
     </div>
 
     <div className="u-full-width submit-message">
-      {submitMessage(isLoading, isSubmitted, submitError)}
+      <SubmitMessage
+        isLoading={isLoading}
+        isSubmitted={isSubmitted}
+        submitError={submitError}
+      />
     </div>
   </form>
 )
