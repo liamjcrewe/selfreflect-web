@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import Home from '../containers/Home'
+import Register from '../containers/Register'
 
 const getBody = selectedTab => {
   switch (selectedTab) {
@@ -9,7 +10,7 @@ const getBody = selectedTab => {
     case 'login':
       return <div>login</div>
     case 'register':
-      return <div>register</div>
+      return <Register />
     case 'record':
       return <div>record</div>
     case 'account':

@@ -78,3 +78,45 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/* 'Register' page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.register-disclaimer {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.register-form {
+  margin-left: 20%;
+  width: 60%;
+}
+
+.register-input-validation-valid {
+  margin-bottom: 1.5rem;
+  color: #3c763d;
+  font-size: 1.5em;
+}
+
+.register-input-validation-error {
+  margin-bottom: 1.5rem;
+  margin-top: 7px;
+  color: #a94442;
+  white-space: nowrap;
+}
+
+.register-server-response {
+  text-align: center;
+  color: #a94442;
+}
+
+.register-buttons-div {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.register-button {
+  width: 120px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
