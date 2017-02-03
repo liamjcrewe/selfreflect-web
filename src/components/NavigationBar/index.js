@@ -1,12 +1,7 @@
 import React, { PropTypes } from 'react'
 import { map, equals } from 'ramda'
 
-const logout = {
-  name: 'logout',
-  label: 'Log out'
-}
-
-const getTab = (selectedTab, updateSelectedTab) => tab => (
+const getTab = (selectedTab, updateSelectedTab, logout) => tab => (
   <button
     key={tab.name}
     className={
@@ -14,9 +9,9 @@ const getTab = (selectedTab, updateSelectedTab) => tab => (
       (tab.name === selectedTab ? 'button-primary' : 'nav-button-unselected')
     }
     onClick={
-      equals(tab, logout)
-      ? () => console.log('logout')
-      : () => updateSelectedTab(tab.name)
+      tab.name === 'logout'
+        ? () => logout()
+        : () => updateSelectedTab(tab.name)
     }
   >
     {tab.label}
@@ -51,7 +46,8 @@ NavigationBar.propTypes = {
     })
   ).isRequired,
   selectedTab: PropTypes.string.isRequired,
-  updateSelectedTab: PropTypes.func.isRequired
+  updateSelectedTab: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 }
 
 export default NavigationBar
