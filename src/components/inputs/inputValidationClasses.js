@@ -1,2 +1,2 @@
-export const validClass = "four columns register-input-validation-valid"
-export const errorClass = "four columns register-input-validation-error"
+export const validClass = "four columns input-validation-valid"
+export const errorClass = "four columns input-validation-error"

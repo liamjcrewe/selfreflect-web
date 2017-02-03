@@ -1,11 +1,32 @@
 /* General
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Colours
+––––––––––––––––––––––––– */
 .error {
   color: #a94442;
 }
 
 .success {
   color: #3c763d;
+}
+
+/* Form elements
+––––––––––––––––––––––––– */
+.input-validation-valid {
+  margin-bottom: 1.5rem;
+  color: #3c763d;
+  font-size: 1.5em;
+}
+
+.input-validation-error {
+  margin-bottom: 1.5rem;
+  margin-top: 7px;
+  color: #a94442;
+  white-space: nowrap;
+}
+
+.submit-message {
+  text-align: center;
 }
 
 /* Navigation bar
@@ -91,14 +112,14 @@
 
 /* 'Register' page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.register-disclaimer {
-  font-weight: 600;
-}
-
 .register-disclaimer-div {
   text-align: center;
   margin-top: 5rem;
   margin-bottom: 3rem;
+}
+
+.register-disclaimer {
+  font-weight: 600;
 }
 
 .register-form {
@@ -106,27 +127,9 @@
   width: 60%;
 }
 
-.register-input-validation-valid {
-  margin-bottom: 1.5rem;
-  color: #3c763d;
-  font-size: 1.5em;
-}
-
-.register-input-validation-error {
-  margin-bottom: 1.5rem;
-  margin-top: 7px;
-  color: #a94442;
-  white-space: nowrap;
-}
-
-.register-server-response {
-  text-align: center;
-  color: #a94442;
-}
-
 .register-buttons-div {
-  margin-top: 3rem;
   text-align: center;
+  margin-top: 3rem;
 }
 
 .register-button {

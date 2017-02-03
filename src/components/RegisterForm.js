@@ -19,7 +19,7 @@ const clearButton = (updateEmail, updatePassword, updateConfirm) => (
   </button>
 )
 
-const serverResponse = (isLoading, isSubmitted, submitError) => {
+const submitMessage = (isLoading, isSubmitted, submitError) => {
   if (isLoading) {
     return (
       <div>
@@ -87,8 +87,8 @@ const RegisterForm = ({
       <input className="button-primary register-button" type="submit" />
     </div>
 
-    <div className="u-full-width register-server-response">
-      {serverResponse(isLoading, isSubmitted, submitError)}
+    <div className="u-full-width submit-message">
+      {submitMessage(isLoading, isSubmitted, submitError)}
     </div>
   </form>
 )
