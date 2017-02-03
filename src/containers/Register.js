@@ -19,7 +19,7 @@ const mapStateToProps = state => {
     email: state.register.email,
     password: state.register.password,
     confirm: state.register.confirm,
-    serverResponse: state.register.serverResponse,
+    serverResponse: state.register.serverResponse
   }
 }
 

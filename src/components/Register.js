@@ -8,10 +8,10 @@ const Register = ({
   password,
   confirm,
   serverResponse,
-  register,
   updateEmail,
   updatePassword,
-  updateConfirm
+  updateConfirm,
+  register
 }) => (
   <div className="container">
     <RegisterDisclaimer />
@@ -21,10 +21,10 @@ const Register = ({
       password={password}
       confirm={confirm}
       serverResponse={serverResponse}
-      register={register}
       updateEmail={updateEmail}
       updatePassword={updatePassword}
       updateConfirm={updateConfirm}
+      register={register}
     />
   </div>
 )

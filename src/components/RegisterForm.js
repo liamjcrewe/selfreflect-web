@@ -99,10 +99,10 @@ const RegisterForm = ({
   password,
   confirm,
   serverResponse,
-  register,
   updateEmail,
   updatePassword,
-  updateConfirm
+  updateConfirm,
+  register
 }) => (
   <form
     className="register-form"
