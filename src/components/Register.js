@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import RegisterForm from './RegisterForm'
+import RegisterDisclaimer from  './RegisterDisclaimer'
 
 const Register = ({
   email,
@@ -13,9 +14,7 @@ const Register = ({
   updateConfirm
 }) => (
   <div className="container">
-    <div className="register-disclaimer">
-      SOME INFO ABOUT THIS BEING FOR TESTING ONLY
-    </div>
+    <RegisterDisclaimer />
 
     <RegisterForm
       email={email}
