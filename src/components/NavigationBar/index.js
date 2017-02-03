@@ -18,8 +18,8 @@ const getTab = (selectedTab, updateSelectedTab, logout) => tab => (
   </button>
 )
 
-const getNavBar = (tabs, selectedTab, updateSelectedTab) => {
-  return (
+const NavigationBar = ({ tabs, selectedTab, updateSelectedTab, logout }) => (
+  <div className="row nav-bar-div">
     <div className="twelve columns nav-bar">
       <div
         className="two columns logo-div"
@@ -27,14 +27,8 @@ const getNavBar = (tabs, selectedTab, updateSelectedTab) => {
       >
         <div className="logo"></div>
       </div>
-        {map(getTab(selectedTab, updateSelectedTab), tabs)}
+        {map(getTab(selectedTab, updateSelectedTab, logout), tabs)}
     </div>
-  )
-}
-
-const NavigationBar = ({ tabs, selectedTab, updateSelectedTab }) => (
-  <div className="row nav-bar-div">
-    {getNavBar(tabs, selectedTab, updateSelectedTab)}
   </div>
 )
 
