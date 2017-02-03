@@ -15,6 +15,7 @@ import {
 const register = (dispatch, email, password) => {
   dispatch(updateIsLoading(true))
   dispatch(updateIsSubmitted(true))
+
   // Make sure we do not keep old submit error messages
   dispatch(updateSubmitError(''))
 
