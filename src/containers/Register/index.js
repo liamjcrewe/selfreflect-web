@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import { api } from '../../config/api'
+import { api } from '../../../config/api'
 
-import Register from '../components/Register'
+import Register from '../../components/Register'
 import {
   updateEmail,
   updatePassword,
@@ -10,7 +10,7 @@ import {
   updateIsSubmitted,
   updateSubmitError,
   resetState
-} from '../ducks/register'
+} from '../../ducks/register'
 
 const register = (dispatch, email, password) => {
   dispatch(updateIsLoading(true))

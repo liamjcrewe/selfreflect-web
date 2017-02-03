@@ -1,10 +1,15 @@
 import { connect } from 'react-redux'
 
-import { updateSelectedTab } from '../ducks/tab'
-import Home from '../components/Home'
+import { updateSelectedTab } from '../../ducks/tab'
+import NavigationBar from '../../components/NavigationBar'
+
+import Tabs from './tabs.js'
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    tabs: state.isLoggedIn ? Tabs.loggedIn : Tabs.loggedOut,
+    selectedTab: state.tab.selectedTab
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -16,4 +21,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(NavigationBar)

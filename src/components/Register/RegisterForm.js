@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 
-import validateEmail from './inputs/validators/email'
-import validatePassword from './inputs/validators/password'
-import validateConfirmPassword from './inputs/validators/confirmPassword'
+import validateEmail from '../Form/Inputs/validators/email'
+import validatePassword from '../Form/Inputs/validators/password'
+import validateConfirmPassword from '../Form/Inputs/validators/confirmPassword'
 
-import EmailInput from './inputs/EmailInput'
-import PasswordInput from './inputs/PasswordInput'
-import ConfirmPasswordInput from './inputs/ConfirmPasswordInput'
+import EmailInput from '../Form/Inputs/EmailInput'
+import PasswordInput from '../Form/Inputs/PasswordInput'
+import ConfirmPasswordInput from '../Form/Inputs/ConfirmPasswordInput'
 
-import SubmitMessage from './SubmitMessage'
+import SubmitMessage from '../Form/SubmitMessage'
 
 const allInputsValid = (email, password, confirm) => {
   return validateEmail(email)
