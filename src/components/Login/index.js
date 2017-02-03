@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 
+import LoginTitle from './LoginTitle'
 import LoginForm from './LoginForm'
 
 const Login = ({
@@ -13,11 +14,7 @@ const Login = ({
   login
 }) => (
   <div className="container">
-    <div className="login-title-div">
-      <div className="login-title">Log in to SelfReflect</div>
-      <br />
-      Enter your email and password below to log in.
-    </div>
+    <LoginTitle />
 
     <LoginForm
       email={email}
