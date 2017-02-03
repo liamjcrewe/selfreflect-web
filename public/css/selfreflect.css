@@ -66,6 +66,10 @@
   border: none;
 }
 
+.button-logout {
+  float: right;
+}
+
 /* 'Home' page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .home {

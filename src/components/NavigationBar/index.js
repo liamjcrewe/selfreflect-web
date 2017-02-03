@@ -5,8 +5,11 @@ const getTab = (selectedTab, updateSelectedTab, logout) => tab => (
   <button
     key={tab.name}
     className={
-      'nav-button ' +
-      (tab.name === selectedTab ? 'button-primary' : 'nav-button-unselected')
+      'nav-button' +
+      ' ' +
+      (tab.name === selectedTab ? 'button-primary' : 'nav-button-unselected') +
+      ' ' +
+      (tab.name === 'logout' ? 'button-logout' : '')
     }
     onClick={
       tab.name === 'logout'
