@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { api } from '../../config/api'
 
 import Register from '../components/Register'
 import {
