@@ -1,83 +1,11 @@
 import React, { PropTypes } from 'react'
 
-const getInputValidationClass = isValid => (
-  "four columns register-input-validation-" + (isValid ? "valid" : "error")
-)
-
-const emailInput = (email, updateEmail) => {
-  const isValidEmail = email
-
-  return (
-    <div className="row u-full-width">
-      <input
-        className="eight columns"
-        type="email"
-        placeholder="me@example.com"
-        id="email"
-        value={email}
-        onChange={event => updateEmail(event.target.value)}
-      />
-      <div className={getInputValidationClass(isValidEmail)}>
-        {isValidEmail ? '✓' : '*Required'}
-      </div>
-    </div>
-  )
-}
-
-const passwordInput = (password, updatePassword) => {
-  return (
-    <div className="row u-full-width">
-      <input
-        className="eight columns"
-        type="password"
-        placeholder="Password"
-        id="password"
-        value={password}
-        onChange={event => updatePassword(event.target.value)}
-      />
-      <div className={getInputValidationClass(password)}>
-        {password ? '✓' : '*Required'}
-      </div>
-    </div>
-  )
-}
-
-const getConfirmValidationMessage = (confirm, password) => {
-  if (!confirm) {
-    return '*Required'
-  }
-
-  if (confirm !== password) {
-    return 'Passwords do not match'
-  }
-
-  return '✓'
-}
-
-const confirmInput = (confirm, password, updateConfirm) => {
-  const isValidConfirm = confirm && (confirm === password)
-
-  return (
-    <div className="row u-full-width">
-      <input
-        className="eight columns"
-        type="password"
-        placeholder="Confirm password"
-        id="confirm"
-        value={confirm}
-        onChange={event => updateConfirm(event.target.value)}
-      />
-      <div className={getInputValidationClass(isValidConfirm)}>
-        {getConfirmValidationMessage(confirm, password)}
-      </div>
-    </div>
-  )
-}
+import EmailInput from './inputs/EmailInput'
+import PasswordInput from './inputs/PasswordInput'
+import ConfirmPasswordInput from './inputs/ConfirmPasswordInput'
 
 const clearButton = (updateEmail, updatePassword, updateConfirm) => (
-  <button
-    className="register-button"
-    onClick={() => {
+  <button className="register-button" onClick={() => {
       updateEmail('')
       updatePassword('')
       updateConfirm('')
@@ -85,13 +13,6 @@ const clearButton = (updateEmail, updatePassword, updateConfirm) => (
   >
     Clear
   </button>
-)
-
-const submitInput = (
-  <input
-    className="button-primary register-button"
-    type="submit"
-  />
 )
 
 const RegisterForm = ({
@@ -112,18 +33,29 @@ const RegisterForm = ({
       register()
     }}
   >
-    <label htmlFor="email">Email</label>
-    {emailInput(email, updateEmail)}
+    <EmailInput email={email} updateEmail={updateEmail} />
 
-    <label htmlFor="password">Password</label>
-    {passwordInput(password, updatePassword)}
+    <PasswordInput password={password} updatePassword={updatePassword} />
 
-    <label htmlFor="confirm">Confirm password</label>
-    {confirmInput(confirm, password, updateConfirm)}
+    <ConfirmPasswordInput
+      confirm={confirm}
+      password={password}
+      updateConfirm={updateConfirm}
+    />
 
     <div className="u-full-width register-buttons-div">
-      {clearButton(updateEmail, updatePassword, updateConfirm)}
-      {submitInput}
+      <button
+        className="register-button"
+        onClick={() => {
+          updateEmail('')
+          updatePassword('')
+          updateConfirm('')
+        }}
+      >
+        Clear
+      </button>
+
+      <input className="button-primary register-button" type="submit" />
     </div>
 
     <div className="u-full-width register-server-response">
