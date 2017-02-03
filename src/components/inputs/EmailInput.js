@@ -1,10 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import { validClass, errorClass } from './inputValidationClasses'
-
-// Simply: *@*.*
-const simpleEmailRegex = /^(.+)@(.+)\.(.+)$/
-const validateEmail = email => simpleEmailRegex.test(email)
+import validateEmail from './validators/email'
 
 const getEmailValidationMessage = email => {
   if (!email) {

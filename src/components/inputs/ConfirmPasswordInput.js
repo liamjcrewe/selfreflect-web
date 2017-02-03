@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import { validClass, errorClass } from './inputValidationClasses'
+import validateConfirmPassword from './validators/confirmPassword'
 
 const getConfirmValidationMessage = (confirm, password) => {
   if (!confirm) {
@@ -19,7 +20,7 @@ const getConfirmValidationMessage = (confirm, password) => {
 }
 
 const ConfirmPasswordInput = ({ confirm, password, updateConfirm }) => {
-  const isValidConfirm = (password.length > 7) && (confirm === password)
+  const isValidConfirm = validateConfirmPassword(password, confirm)
 
   return (
     <div>

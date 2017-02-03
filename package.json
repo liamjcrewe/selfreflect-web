@@ -23,6 +23,8 @@
     "watch": "^0.18.0"
   },
   "dependencies": {
+    "es6-promise": "^4.0.5",
+    "isomorphic-fetch": "^2.2.1",
     "ramda": "^0.23.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",

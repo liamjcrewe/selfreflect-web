@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import { validClass, errorClass } from './inputValidationClasses'
+import validatePassword from './validators/password'
 
 const getPasswordValidatonMessage = password => {
   if (!password) {
@@ -15,7 +16,7 @@ const getPasswordValidatonMessage = password => {
 }
 
 const PasswordInput = ({ password, updatePassword }) => {
-  const isValidPassword = password.length > 7
+  const isValidPassword = validatePassword(password)
 
   return (
     <div>
