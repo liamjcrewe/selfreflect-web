@@ -35,20 +35,23 @@ const registerButton = updateSelectedTab => (
   </button>
 )
 
-const Home = ({ updateSelectedTab }) => (
+const Home = ({ isLoggedIn, updateSelectedTab }) => (
   <div className="home">
     {backgroundImage}
     <div className="container home-content-div">
       {infoText}
-      <div className="home-buttons-div">
-        {loginButton(updateSelectedTab)}
-        {registerButton(updateSelectedTab)}
-      </div>
+      {isLoggedIn || (
+        <div className="home-buttons-div">
+          {loginButton(updateSelectedTab)}
+          {registerButton(updateSelectedTab)}
+        </div>
+      )}
     </div>
   </div>
 )
 
 Home.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
   updateSelectedTab: PropTypes.func.isRequired
 }
 
