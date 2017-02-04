@@ -12,14 +12,8 @@ import {
   resetState
 } from '../../ducks/login'
 
-import {
-  updateId,
-  updateToken
-} from '../../ducks/user'
-
-import {
-  updateSelectedTab
-} from '../../ducks/tab'
+import { updateId, updateToken } from '../../ducks/user'
+import { updateSelectedTab } from '../../ducks/tab'
 
 const login = (dispatch, email, password) => {
   dispatch(updateIsLoading(true))
@@ -63,8 +57,6 @@ const login = (dispatch, email, password) => {
           dispatch(updateId(json.id))
 
           dispatch(updateToken({ value: json.token, exp: json.exp }))
-
-          dispatch(updateIsLoading(false))
 
           dispatch(updateSelectedTab('guide'))
 
