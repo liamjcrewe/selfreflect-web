@@ -16,7 +16,12 @@ const persistedState = loadState()
 
 let store = createStore(reducers, persistedState)
 
-store.subscribe(throttle(1000, () => {
+/*
+ * Persist user in html web storage
+ *
+ * Throttled to max once every 3 seconds
+ */
+store.subscribe(throttle(3000, () => {
   const user = store.getState().user
 
   if (!persistedState) {
@@ -30,12 +35,17 @@ store.subscribe(throttle(1000, () => {
   persistState({ user })
 }))
 
-store.subscribe(throttle(1000, () => {
-  const exp = store.getState().user.token.exp
-  const now = Math.floor(Date.now() / 1000)
+/*
+ * Refresh token if it is going to expire in less than an hour
+ *
+ * Throttled to max once every 60 seconds
+ */
+store.subscribe(throttle(60000, () => {
+  const token = store.getState().user.token
+  const nowInSeconds = Math.floor(Date.now() / 1000)
 
-  // If going to expire in more than an hour, do nothing
-  if (exp - 3600 > now) {
+  // If no token, or going to expire in more than an hour, do nothing
+  if (!token.value || (token.exp - 3600 > nowInSeconds)) {
     return
   }
 
