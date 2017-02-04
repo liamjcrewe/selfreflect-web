@@ -27,6 +27,10 @@ export default {
       label: 'Record mood'
     },
     {
+      name: 'analysis',
+      label: 'Analysis'
+    },
+    {
       name: 'account',
       label: 'Account managament'
     },

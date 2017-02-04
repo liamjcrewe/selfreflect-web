@@ -16,6 +16,8 @@ const getBody = selectedTab => {
       return <div>guide</div>
     case 'record':
       return <div>record</div>
+    case 'analysis':
+      return <div>analysis</div>
     case 'account':
       return <div>account</div>
     default:
