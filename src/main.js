@@ -10,6 +10,7 @@ import throttle from 'throttle-debounce/throttle'
 
 import { loadState, persistState } from './localStorage'
 import reducers from './ducks'
+import refreshToken from './refreshToken'
 import App from './components/App'
 
 const persistedState = loadState()
@@ -50,6 +51,7 @@ store.subscribe(throttle(60000, () => {
   }
 
   // Else refresh token
+  refreshToken(store.dispatch, token)
 }))
 
 render(
