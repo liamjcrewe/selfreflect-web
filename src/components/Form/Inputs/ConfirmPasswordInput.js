@@ -20,7 +20,7 @@ const getConfirmValidationMessage = (confirm, password) => {
 }
 
 const ConfirmPasswordInput = ({ confirm, password, updateConfirm }) => {
-  const isValidConfirm = validateConfirmPassword(password, confirm)
+  const isValidConfirm = validateConfirmPassword(confirm, password)
 
   return (
     <div>
