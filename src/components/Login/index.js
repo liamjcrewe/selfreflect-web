@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 import LoginTitle from './LoginTitle'
 import LoginForm from '../../containers/LoginForm'
