@@ -1,36 +1,47 @@
 import React, { PropTypes } from 'react'
-import { map, equals } from 'ramda'
+import { map } from 'ramda'
 
-const getTab = (selectedTab, updateSelectedTab, logout) => tab => (
-  <button
-    key={tab.name}
-    className={
-      'nav-button' +
-      ' ' +
-      (tab.name === selectedTab ? 'button-primary' : 'nav-button-unselected') +
-      ' ' +
-      (tab.name === 'logout' ? 'button-logout' : '')
-    }
-    onClick={
-      tab.name === 'logout'
-        ? () => logout()
-        : () => updateSelectedTab(tab.name)
-    }
-  >
-    {tab.label}
-  </button>
-)
+import Logo from './Logo'
 
-const NavigationBar = ({ tabs, selectedTab, updateSelectedTab, logout }) => (
+const getTabClass = (tabName, selectedTab) => {
+  if (tabName === selectedTab) {
+    return 'nav-button button-primary'
+  }
+
+  if (tabName === 'logout') {
+    return 'nav-button nav-button-unselected button-logout'
+  }
+
+  return 'nav-button nav-button-unselected'
+}
+
+const getTab = (selectedTab, updateSelectedTab, logout) => tab => {
+  const onClick = tab.name === 'logout'
+    ? logout
+    : () => updateSelectedTab(tab.name)
+
+  return (
+    <button
+      key={tab.name}
+      className={getTabClass(tab.name, selectedTab)}
+      onClick={onClick}
+    >
+      {tab.label}
+    </button>
+  )
+}
+
+const NavigationBar = ({
+  tabs,
+  selectedTab,
+  onLogoClick,
+  updateSelectedTab,
+  logout
+}) => (
   <div className="row nav-bar-div">
     <div className="twelve columns nav-bar">
-      <div
-        className="two columns logo-div"
-        onClick={() => updateSelectedTab('home')}
-      >
-        <div className="logo"></div>
-      </div>
-        {map(getTab(selectedTab, updateSelectedTab, logout), tabs)}
+      <Logo onClick={onLogoClick} />
+      {map(getTab(selectedTab, updateSelectedTab, logout), tabs)}
     </div>
   </div>
 )
@@ -43,6 +54,7 @@ NavigationBar.propTypes = {
     })
   ).isRequired,
   selectedTab: PropTypes.string.isRequired,
+  onLogoClick: PropTypes.func.isRequired,
   updateSelectedTab: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired
 }
