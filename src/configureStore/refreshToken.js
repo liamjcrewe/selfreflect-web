@@ -1,5 +1,5 @@
-import { api } from '../config/api'
-import { setToken } from './ducks/token'
+import { api } from '../../config/api'
+import { setToken } from '../ducks/token'
 
 export default (dispatch, token) => {
   return fetch(api + '/v1/tokens', {

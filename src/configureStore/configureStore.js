@@ -2,10 +2,10 @@ import { createStore } from 'redux'
 import { equals } from 'ramda'
 import throttle from 'throttle-debounce/throttle'
 
-import { loadState, persistState, clearPersistedState } from './localStorage'
-import reducers from './ducks'
+import { loadState, persistState, clearState } from './localStorage'
+import reducers from '../ducks'
 import refreshToken from './refreshToken'
-import validateToken from './validateToken'
+import validateToken from '../validateToken'
 import fetchUser from './fetchUser'
 
 export default () => {
@@ -26,7 +26,7 @@ export default () => {
 
     // If no user id in new state, user has logged out, so clear persisted state
     if (!user.id) {
-      return clearPersistedState()
+      return clearState()
     }
 
     if (!persistedState) {

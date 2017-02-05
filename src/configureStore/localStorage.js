@@ -22,7 +22,7 @@ export const persistState = state => {
   }
 }
 
-export const clearPersistedState = () => {
+export const clearState = () => {
   try {
     return localStorage.clear()
   } catch (_) {
