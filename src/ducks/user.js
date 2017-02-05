@@ -1,7 +1,7 @@
 // Constants
 const UPDATE_ID = 'UPDATE_ID'
-const UPDATE_TOKEN = 'UPDATE_TOKEN'
-const RESET_USER_STATE = 'RESET_USER_STATE'
+const UPDATE_USER = 'UPDATE_USER'
+const RESET_USER = 'RESET_USER'
 
 // Actions
 export const updateId = id => {
@@ -11,27 +11,24 @@ export const updateId = id => {
   }
 }
 
-export const updateToken = ({ value, exp }) => {
+export const updateUser = ({ id, email }) => {
   return {
-    type: UPDATE_TOKEN,
-    value,
-    exp
+    type: UPDATE_USER,
+    id,
+    email
   }
 }
 
-export const resetUserState = () => {
+export const resetUser = () => {
   return {
-    type: RESET_USER_STATE
+    type: RESET_USER
   }
 }
 
 // Reducer
 const initialState = {
   id: 0,
-  token: {
-    value: '',
-    exp: 0
-  }
+  email: ''
 }
 
 export default (state = initialState, action) => {
@@ -41,15 +38,12 @@ export default (state = initialState, action) => {
         ...state,
         id: action.id
       }
-    case UPDATE_TOKEN:
+    case UPDATE_USER:
       return {
-        ...state,
-        token: {
-          value: action.value,
-          exp: action.exp
-        }
+        id: action.id,
+        email: action.email
       }
-    case RESET_USER_STATE:
+    case RESET_USER:
       return initialState
     default:
       return state

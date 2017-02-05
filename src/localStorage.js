@@ -14,9 +14,17 @@ export const loadState = () => {
 
 export const persistState = state => {
   try {
-    const serializedToken = JSON.stringify(state)
+    const serializedState = JSON.stringify(state)
 
-    return localStorage.setItem('state', serializedToken)
+    return localStorage.setItem('state', serializedState)
+  } catch (_) {
+    return
+  }
+}
+
+export const clearPersistedState = () => {
+  try {
+    return localStorage.clear()
   } catch (_) {
     return
   }

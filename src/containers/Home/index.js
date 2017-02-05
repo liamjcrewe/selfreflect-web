@@ -5,7 +5,7 @@ import validateToken from '../../validateToken'
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: validateToken(state.user.token)
+    isLoggedIn: validateToken(state.token)
   }
 }
 

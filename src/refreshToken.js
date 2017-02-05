@@ -1,5 +1,5 @@
 import { api } from '../config/api'
-import { updateId, updateToken } from './ducks/user'
+import { updateToken } from './ducks/token'
 
 export default (dispatch, token) => {
   return fetch(api + '/v1/tokens', {
@@ -19,8 +19,6 @@ export default (dispatch, token) => {
       // Success
       return response.json()
         .then(json => {
-          dispatch(updateId(json.id))
-
           dispatch(updateToken({ value: json.token, exp: json.exp }))
         })
     })

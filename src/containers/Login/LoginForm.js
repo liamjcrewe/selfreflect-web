@@ -12,7 +12,8 @@ import {
   resetState
 } from '../../ducks/login'
 
-import { updateId, updateToken } from '../../ducks/user'
+import { updateId } from '../../ducks/user'
+import { updateToken } from '../../ducks/token'
 import { updateSelectedTab } from '../../ducks/tab'
 
 const login = (dispatch, email, password) => {
