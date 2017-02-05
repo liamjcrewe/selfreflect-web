@@ -12,7 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSelectedTab: newTab => { dispatch(updateSelectedTab(newTab)) }
+    onLoginClick: () => { dispatch(updateSelectedTab('login')) },
+    onRegisterClick: () => { dispatch(updateSelectedTab('register')) }
   }
 }
 

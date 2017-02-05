@@ -1,49 +1,24 @@
 import React, { PropTypes } from 'react'
 
-const backgroundImage = (
-  <img
-    src="images/reflect.jpg"
-    className="u-full-width home-img"
-  />
-)
+import HomeInfo from './HomeInfo'
 
-const infoText = (
-  <div className="home-info-text">
-    SelfReflect is an application designed to allow users to investigate the relationships between their mental wellbeing and various data that is already being collected about them.
-    <br /><br />
-    This data includes social media activity from applications such as Twitter, music listening habits from applications such as last.fm and exercise tracking data from applications such as Strava.
-    <br /><br />
-    This project was developed as part of a final year BSc Computer Science degree at the University of Bath.
-  </div>
-)
+const homeButtonsClass = "home-button button-primary"
 
-const loginButton = updateSelectedTab => (
-  <button
-    className="home-button button-primary"
-    onClick={() => updateSelectedTab('login')}
-  >
-    Log in
-  </button>
-)
-
-const registerButton = updateSelectedTab => (
-  <button
-    className="home-button button-primary"
-    onClick={() => updateSelectedTab('register')}
-  >
-    Register
-  </button>
-)
-
-const Home = ({ isLoggedIn, updateSelectedTab }) => (
+const Home = ({ isLoggedIn, onLoginClick, onRegisterClick }) => (
   <div className="home">
-    {backgroundImage}
+    <img src="images/reflect.jpg" className="u-full-width home-img" />
     <div className="container home-content-div">
-      {infoText}
+      <HomeInfo />
+
       {isLoggedIn || (
         <div className="home-buttons-div">
-          {loginButton(updateSelectedTab)}
-          {registerButton(updateSelectedTab)}
+          <button className={homeButtonsClass} onClick={onLoginClick}>
+            Log in
+          </button>
+
+          <button className={homeButtonsClass} onClick={onRegisterClick}>
+            Register
+          </button>
         </div>
       )}
     </div>
@@ -52,7 +27,8 @@ const Home = ({ isLoggedIn, updateSelectedTab }) => (
 
 Home.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  updateSelectedTab: PropTypes.func.isRequired
+  onLoginClick: PropTypes.func.isRequired,
+  onRegisterClick: PropTypes.func.isRequired
 }
 
 export default Home
