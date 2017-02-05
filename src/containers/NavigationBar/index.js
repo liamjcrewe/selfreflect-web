@@ -10,7 +10,9 @@ import Tabs from './tabs.js'
 
 const mapStateToProps = state => {
   return {
-    tabs: validateToken(state.token) ? Tabs.loggedIn : Tabs.loggedOut,
+    tabs: validateToken(state.token) && (state.user.id !== 0)
+      ? Tabs.loggedIn
+      : Tabs.loggedOut,
     selectedTab: state.tab.selectedTab
   }
 }
