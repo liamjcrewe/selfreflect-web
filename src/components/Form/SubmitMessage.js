@@ -2,11 +2,7 @@ import React, { PropTypes } from 'react'
 
 const SubmitMessage = ({ isLoading, isSubmitted, submitError }) => {
   if (isLoading) {
-    return (
-      <div>
-        Contacting server...
-      </div>
-    )
+    return <div>Contacting server...</div>
   }
 
   if (isSubmitted) {
