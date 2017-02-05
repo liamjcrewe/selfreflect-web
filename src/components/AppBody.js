@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 
 import Home from '../containers/Home'
-import Register from '../containers/Register'
-import Login from '../components/Login'
+import Register from './Register'
+import Login from './Login'
 
 const getBody = selectedTab => {
   switch (selectedTab) {
