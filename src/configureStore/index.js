@@ -68,7 +68,6 @@ export default () => {
       return
     }
 
-    // Else refresh token
     refreshToken(store.dispatch, token)
   }))
 
