@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { api } from '../../../config/api'
 
-import Register from '../../components/Register'
+import RegisterForm from '../../components/Register/RegisterForm'
 import {
   updateEmail,
   updatePassword,
@@ -73,4 +73,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Register)
+)(RegisterForm)
