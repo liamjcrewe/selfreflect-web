@@ -1,5 +1,5 @@
 import { api } from '../../config/api'
-import { updateIsLoading, setUser } from '../ducks/user'
+import { updateIsLoading, updateUser } from '../ducks/user'
 
 export default (dispatch, userId, token) => {
   dispatch(updateIsLoading(true))
@@ -21,7 +21,7 @@ export default (dispatch, userId, token) => {
       // Success
       return response.json()
         .then(json => {
-          dispatch(setUser({ id: json.id, email: json.email }))
+          dispatch(updateUser({ id: json.id, email: json.email }))
 
           dispatch(updateIsLoading(false))
         })
