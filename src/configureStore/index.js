@@ -8,6 +8,15 @@ import refreshToken from './refreshToken'
 import validateToken from '../validateToken'
 import fetchUser from './fetchUser'
 
+/**
+ * Throttle to max once every 300 seconds (5 minutes), so we are not constantly
+ * fetching from the server. Most of the time the server data and web app data
+ * for a user are going to be in sync, so do not want to constantly update.
+ */
+const throttledFetchUser = throttle(300000, (dispatch, userId, token) => {
+  fetchUser(dispatch, userId, token)
+})
+
 export default () => {
   const persistedState = loadState()
 
@@ -63,20 +72,35 @@ export default () => {
   /**
    * Update user information from server regularly
    *
-   * Throttled to max once every 60 seconds (most of the time server and app
-   * will be in sync, so do not want to fire this too often)
+   * Can't throttle this every time, as user and token are set in two separate
+   * actions. If we throttled, the first update (user) would happen, the guard
+   * clause below would be true and user would not be fetched. Then, the second
+   * update would happen (token), but again user would not be fetched as this
+   * would be throttled.
+   *
+   * The user would then be left waiting for the throttled time before they
+   * could do anything that needed their user details.
+   *
+   * Need to throttle somewhere to avoid constantly sending API requests, so do:
+   *  - If this is a first time fetch, do not throttle
+   *  - Else (i.e. if this is an update), call a throttled version of fetchUser
    */
-  store.subscribe(throttle(60000, () => {
+  store.subscribe(() => {
     const user = store.getState().user
     const token = store.getState().token
 
-    // If not logged in, or if token invalid
-    if (!user.id || !validateToken(token)) {
+    // If already loading, user not logged in, or if token invalid, do nothing
+    if (user.isLoading || !user.id || !validateToken(token)) {
       return
     }
 
-    fetchUser(store.dispatch, user.id, token.value)
-  }))
+    // If first time fetching, do not throttle
+    if (!user.email) {
+      return fetchUser(store.dispatch, user.id, token)
+    }
+
+    throttledFetchUser(store.dispatch, user.id, token)
+  })
 
   return store
 }
