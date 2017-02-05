@@ -27,7 +27,9 @@ export default () => {
    *
    * Can't throttle this unfortunately. If user logs out we have to clear
    * persisted state instantly, otherwise a quick refresh could result in the
-   * user still being logged in.
+   * user still being logged in. Should be cheap to call this the majority of
+   * the time though, as it checks if anything has changed before it persists
+   * the state.
    */
   store.subscribe(() => {
     const user = store.getState().user
@@ -54,13 +56,14 @@ export default () => {
   /*
    * Refresh token if it is going to expire in less than an hour
    *
-   * Throttled to max once every 60 seconds
+   * Throttled to max once every 300 seconds (5 minutes), as we really don't
+   * need to check the token more often than this.
    */
-  store.subscribe(throttle(60000, () => {
+  store.subscribe(throttle(300000, () => {
     const token = store.getState().token
     const nowInSeconds = Math.floor(Date.now() / 1000)
 
-    // If no token, or going to expire in more than an hour, do nothing
+    // If no token, or if token going to expire in more than an hour, do nothing
     if (!token.value || (token.exp - 3600 > nowInSeconds)) {
       return
     }
