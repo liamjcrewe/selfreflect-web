@@ -1,17 +1,23 @@
 import React, { PropTypes } from 'react'
 
 import Home from '../containers/Home'
+import Register from './Register'
+import Login from './Login'
 
 const getBody = selectedTab => {
   switch (selectedTab) {
     case 'home':
       return <Home />
     case 'login':
-      return <div>login</div>
+      return <Login />
     case 'register':
-      return <div>register</div>
+      return <Register />
+    case 'guide':
+      return <div>guide</div>
     case 'record':
       return <div>record</div>
+    case 'analysis':
+      return <div>analysis</div>
     case 'account':
       return <div>account</div>
     default:

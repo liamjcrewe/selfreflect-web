@@ -19,8 +19,16 @@ export default {
       label: 'Home'
     },
     {
+      name: 'guide',
+      label: 'Guide'
+    },
+    {
       name: 'record',
       label: 'Record mood'
+    },
+    {
+      name: 'analysis',
+      label: 'Analysis'
     },
     {
       name: 'account',

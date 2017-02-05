@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 
-import { updateSelectedTab } from '../ducks/tab'
 import AppBody from '../components/AppBody'
 
 const mapStateToProps = state => {
@@ -9,11 +8,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {}
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(AppBody)
