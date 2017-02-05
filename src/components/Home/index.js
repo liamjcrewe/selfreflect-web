@@ -1,34 +1,22 @@
 import React, { PropTypes } from 'react'
 
 import HomeInfo from './HomeInfo'
+import HomeButtons from '../../containers/Home/HomeButtons'
 
 const homeButtonsClass = "home-button button-primary"
 
-const Home = ({ isLoggedIn, onLoginClick, onRegisterClick }) => (
+const Home = ({ isLoggedIn }) => (
   <div className="home">
     <img src="images/reflect.jpg" className="u-full-width home-img" />
     <div className="container home-content-div">
       <HomeInfo />
-
-      {isLoggedIn || (
-        <div className="home-buttons-div">
-          <button className={homeButtonsClass} onClick={onLoginClick}>
-            Log in
-          </button>
-
-          <button className={homeButtonsClass} onClick={onRegisterClick}>
-            Register
-          </button>
-        </div>
-      )}
+      {isLoggedIn || <HomeButtons />}
     </div>
   </div>
 )
 
 Home.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
-  onLoginClick: PropTypes.func.isRequired,
-  onRegisterClick: PropTypes.func.isRequired
+  isLoggedIn: PropTypes.bool.isRequired
 }
 
 export default Home

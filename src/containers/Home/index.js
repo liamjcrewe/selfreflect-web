@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 
-import { updateSelectedTab } from '../../ducks/tab'
 import Home from '../../components/Home'
 import validateToken from '../../validateToken'
 
@@ -10,12 +9,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onLoginClick: () => { dispatch(updateSelectedTab('login')) },
-    onRegisterClick: () => { dispatch(updateSelectedTab('register')) }
-  }
-}
+const mapDispatchToProps = dispatch => {}
 
 export default connect(
   mapStateToProps,
