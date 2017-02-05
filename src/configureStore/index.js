@@ -40,6 +40,10 @@ export default () => {
       return clearState()
     }
 
+    if (user.isLoading) {
+      return
+    }
+
     if (!persistedState) {
       return persistState({ user, token })
     }
