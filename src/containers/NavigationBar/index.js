@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogoClick: () => { dispatch(updateSelectedTab('home)')) },
+    onLogoClick: () => { dispatch(updateSelectedTab('home')) },
     updateSelectedTab: newTab => { dispatch(updateSelectedTab(newTab)) },
     logout: () => {
       dispatch(resetUserState())
