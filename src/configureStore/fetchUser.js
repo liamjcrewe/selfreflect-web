@@ -21,8 +21,6 @@ export default (dispatch, userId, token) => {
       // Success
       return response.json()
         .then(json => {
-          console.log(json)
-
           dispatch(setUser({ id: json.id, email: json.email }))
 
           dispatch(updateIsLoading(false))
