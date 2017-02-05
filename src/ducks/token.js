@@ -1,11 +1,11 @@
 // Constants
-const UPDATE_TOKEN = 'UPDATE_TOKEN'
+const SET_TOKEN = 'SET_TOKEN'
 const RESET_TOKEN = 'RESET_TOKEN'
 
 // Actions
-export const updateToken = ({ value, exp }) => {
+export const setToken = ({ value, exp }) => {
   return {
-    type: UPDATE_TOKEN,
+    type: SET_TOKEN,
     value,
     exp
   }
@@ -24,7 +24,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_TOKEN:
+    case SET_TOKEN:
       return {
         value: action.value,
         exp: action.exp

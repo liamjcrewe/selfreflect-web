@@ -1,11 +1,11 @@
 // Constants
-const UPDATE_SELECTED_TAB = 'UPDATE_SELECTED_TAB'
+const SET_SELECTED_TAB = 'SET_SELECTED_TAB'
 
 // Actions
-export const updateSelectedTab = newTab => {
+export const setSelectedTab = selectedTab => {
   return {
-    type: UPDATE_SELECTED_TAB,
-    newTab
+    type: SET_SELECTED_TAB,
+    selectedTab
   }
 }
 
@@ -16,10 +16,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_SELECTED_TAB:
+    case SET_SELECTED_TAB:
       return {
-        ...state,
-        selectedTab: action.newTab
+        selectedTab: action.selectedTab
       }
     default:
       return state

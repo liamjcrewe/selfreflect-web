@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 
-import { updateSelectedTab } from '../../ducks/tab'
+import { setSelectedTab } from '../../ducks/tab'
 import HomeButtons from '../../components/Home/HomeButtons'
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLoginClick: () => { dispatch(updateSelectedTab('login')) },
-    onRegisterClick: () => { dispatch(updateSelectedTab('register')) }
+    onLoginClick: () => { dispatch(setSelectedTab('login')) },
+    onRegisterClick: () => { dispatch(setSelectedTab('register')) }
   }
 }
 

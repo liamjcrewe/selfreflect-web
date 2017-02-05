@@ -15,10 +15,10 @@ const getTabClass = (tabName, selectedTab) => {
   return 'nav-button nav-button-unselected'
 }
 
-const getTab = (selectedTab, updateSelectedTab, logout) => tab => {
+const getTab = (selectedTab, setSelectedTab, logout) => tab => {
   const onClick = tab.name === 'logout'
     ? logout
-    : () => updateSelectedTab(tab.name)
+    : () => setSelectedTab(tab.name)
 
   return (
     <button
@@ -35,13 +35,13 @@ const NavigationBar = ({
   tabs,
   selectedTab,
   onLogoClick,
-  updateSelectedTab,
+  setSelectedTab,
   logout
 }) => (
   <div className="row nav-bar-div">
     <div className="twelve columns nav-bar">
       <Logo onClick={onLogoClick} />
-      {map(getTab(selectedTab, updateSelectedTab, logout), tabs)}
+      {map(getTab(selectedTab, setSelectedTab, logout), tabs)}
     </div>
   </div>
 )
@@ -55,7 +55,7 @@ NavigationBar.propTypes = {
   ).isRequired,
   selectedTab: PropTypes.string.isRequired,
   onLogoClick: PropTypes.func.isRequired,
-  updateSelectedTab: PropTypes.func.isRequired,
+  setSelectedTab: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired
 }
 

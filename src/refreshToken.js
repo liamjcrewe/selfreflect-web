@@ -1,5 +1,5 @@
 import { api } from '../config/api'
-import { updateToken } from './ducks/token'
+import { setToken } from './ducks/token'
 
 export default (dispatch, token) => {
   return fetch(api + '/v1/tokens', {
@@ -19,7 +19,7 @@ export default (dispatch, token) => {
       // Success
       return response.json()
         .then(json => {
-          dispatch(updateToken({ value: json.token, exp: json.exp }))
+          dispatch(setToken({ value: json.token, exp: json.exp }))
         })
     })
     .catch(_ => {

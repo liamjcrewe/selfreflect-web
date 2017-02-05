@@ -13,8 +13,8 @@ import {
 } from '../../ducks/login'
 
 import { updateId } from '../../ducks/user'
-import { updateToken } from '../../ducks/token'
-import { updateSelectedTab } from '../../ducks/tab'
+import { setToken } from '../../ducks/token'
+import { setSelectedTab } from '../../ducks/tab'
 
 const login = (dispatch, email, password) => {
   dispatch(updateIsLoading(true))
@@ -57,9 +57,9 @@ const login = (dispatch, email, password) => {
         .then(json => {
           dispatch(updateId(json.id))
 
-          dispatch(updateToken({ value: json.token, exp: json.exp }))
+          dispatch(setToken({ value: json.token, exp: json.exp }))
 
-          dispatch(updateSelectedTab('guide'))
+          dispatch(setSelectedTab('guide'))
 
           dispatch(resetState())
         })

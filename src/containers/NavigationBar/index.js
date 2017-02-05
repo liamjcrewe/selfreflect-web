@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { updateSelectedTab } from '../../ducks/tab'
+import { setSelectedTab } from '../../ducks/tab'
 import { resetUser } from '../../ducks/user'
 import { resetToken } from '../../ducks/token'
 import NavigationBar from '../../components/NavigationBar'
@@ -19,13 +19,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogoClick: () => { dispatch(updateSelectedTab('home')) },
-    updateSelectedTab: newTab => { dispatch(updateSelectedTab(newTab)) },
+    onLogoClick: () => { dispatch(setSelectedTab('home')) },
+    setSelectedTab: newTab => { dispatch(setSelectedTab(newTab)) },
     logout: () => {
       dispatch(resetUser())
       dispatch(resetToken())
 
-      dispatch(updateSelectedTab('home'))
+      dispatch(setSelectedTab('home'))
     }
   }
 }

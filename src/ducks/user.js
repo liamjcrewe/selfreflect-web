@@ -1,6 +1,6 @@
 // Constants
 const UPDATE_ID = 'UPDATE_ID'
-const UPDATE_USER = 'UPDATE_USER'
+const SET_USER = 'SET_USER'
 const RESET_USER = 'RESET_USER'
 
 // Actions
@@ -11,9 +11,9 @@ export const updateId = id => {
   }
 }
 
-export const updateUser = ({ id, email }) => {
+export const setUser = ({ id, email }) => {
   return {
-    type: UPDATE_USER,
+    type: SET_USER,
     id,
     email
   }
@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
         ...state,
         id: action.id
       }
-    case UPDATE_USER:
+    case SET_USER:
       return {
         id: action.id,
         email: action.email
