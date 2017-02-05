@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { api } from '../../../config/api'
 
-import LoginForm from '../../components/login/LoginForm'
+import LoginForm from '../../components/Login/LoginForm'
 
 import {
   updateEmail,
