@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 import App from './components/App'
 
-let store = configureStore()
+const store = configureStore()
 
 render(
   <Provider store={ store }>

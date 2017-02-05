@@ -11,7 +11,7 @@ import fetchUser from './fetchUser'
 export default () => {
   const persistedState = loadState()
 
-  let store = createStore(reducers, persistedState)
+  const store = createStore(reducers, persistedState)
 
   /*
    * Persist user and token in html web storage
