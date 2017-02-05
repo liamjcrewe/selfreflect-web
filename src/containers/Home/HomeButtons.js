@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { updateSelectedTab } from '../../ducks/tab'
 import HomeButtons from '../../components/Home/HomeButtons'
 
-const mapStateToProps = state => {}
-
 const mapDispatchToProps = dispatch => {
   return {
     onLoginClick: () => { dispatch(updateSelectedTab('login')) },
@@ -13,6 +11,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(HomeButtons)
