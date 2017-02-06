@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react'
 import Home from '../containers/Home'
 import Register from './Register'
 import Login from './Login'
+import Four0Four from './Four0Four'
 
 const getBody = selectedTab => {
   switch (selectedTab) {
@@ -21,7 +22,7 @@ const getBody = selectedTab => {
     case 'account':
       return <div>account</div>
     default:
-      return <div>404</div>
+      return <Four0Four />
   }
 }
 

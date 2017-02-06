@@ -169,3 +169,18 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/* '404' page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.four-0-four {
+  height: 85%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
