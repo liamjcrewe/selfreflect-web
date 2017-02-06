@@ -4,6 +4,7 @@ import Home from '../containers/Home'
 import Register from './Register'
 import Login from './Login'
 import Four0Four from './Four0Four'
+import Record from './Record'
 
 const getBody = selectedTab => {
   switch (selectedTab) {
@@ -16,7 +17,7 @@ const getBody = selectedTab => {
     case 'guide':
       return <div>guide</div>
     case 'record':
-      return <div>record</div>
+      return <Record />
     case 'analysis':
       return <div>analysis</div>
     case 'account':

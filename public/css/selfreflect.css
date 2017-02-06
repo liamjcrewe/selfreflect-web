@@ -185,3 +185,15 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* 'Record' page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.record-title-div {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 3rem;
+}
+
+.record-title {
+  font-weight: 600;
+}
