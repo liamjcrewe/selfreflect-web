@@ -26,7 +26,7 @@ const RegisterForm = ({
   updateEmail,
   updatePassword,
   updateConfirm,
-  resetForm,
+  resetState,
   register
 }) => (
   <form
@@ -53,7 +53,7 @@ const RegisterForm = ({
     />
 
     <div className="u-full-width register-buttons-div">
-      <button type="button" className="register-button" onClick={resetForm}>
+      <button type="button" className="register-button" onClick={resetState}>
         Clear
       </button>
 
@@ -80,7 +80,7 @@ RegisterForm.propTypes = {
   updateEmail: PropTypes.func.isRequired,
   updatePassword: PropTypes.func.isRequired,
   updateConfirm: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
+  resetState: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired
 }
 

@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => {
     updateEmail: email => { dispatch(updateEmail(email)) },
     updatePassword: password => { dispatch(updatePassword(password)) },
     updateConfirm: confirm => { dispatch(updateConfirm(confirm)) },
-    resetForm: () => { dispatch(resetState()) },
+    resetState: () => { dispatch(resetState()) },
     register: (email, password) => register(dispatch, email, password)
   }
 }
