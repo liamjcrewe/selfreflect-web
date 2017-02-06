@@ -1,15 +1,17 @@
 import { connect } from 'react-redux'
-import { sum } from 'ramda'
+import { contains, sum } from 'ramda'
 
 import { updateScore, resetState } from '../../ducks/record'
 import SWEMWBS from '../../components/Record/SWEMWBS'
 
 const submit = (dispatch, scores) => {
+  // If any question unanswered, do nothing
+  if (contains(0, scores)) {
+    return
+  }
+
   const wellbeing = sum(scores)
 
-  console.log(scores)
-  console.log(wellbeing)
-  //
   // submit to server
   //
   // onFail: update error message

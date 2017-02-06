@@ -4,7 +4,7 @@ import RecordTitle from './RecordTitle'
 import SWEMWBS from '../../containers/Record/SWEMWBS'
 
 export default () => (
-  <div className="container">
+  <div>
     <RecordTitle />
     <SWEMWBS />
   </div>
