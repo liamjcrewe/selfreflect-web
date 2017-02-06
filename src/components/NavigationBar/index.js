@@ -2,34 +2,7 @@ import React, { PropTypes } from 'react'
 import { map } from 'ramda'
 
 import Logo from './Logo'
-
-const getTabClass = (tabName, selectedTab) => {
-  if (tabName === selectedTab) {
-    return 'nav-button button-primary'
-  }
-
-  if (tabName === 'logout') {
-    return 'nav-button nav-button-unselected button-logout'
-  }
-
-  return 'nav-button nav-button-unselected'
-}
-
-const getTab = (selectedTab, setSelectedTab, logout) => tab => {
-  const onClick = tab.name === 'logout'
-    ? logout
-    : () => setSelectedTab(tab.name)
-
-  return (
-    <button
-      key={tab.name}
-      className={getTabClass(tab.name, selectedTab)}
-      onClick={onClick}
-    >
-      {tab.label}
-    </button>
-  )
-}
+import Tab from './Tab'
 
 const NavigationBar = ({
   tabs,
@@ -41,7 +14,16 @@ const NavigationBar = ({
   <div className="row nav-bar-div">
     <div className="twelve columns nav-bar">
       <Logo onClick={onLogoClick} />
-      {map(getTab(selectedTab, setSelectedTab, logout), tabs)}
+      {map(tab => (
+        <Tab
+          key={tab.name}
+          name={tab.name}
+          label={tab.label}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          logout={logout}
+        />
+      ), tabs)}
     </div>
   </div>
 )
