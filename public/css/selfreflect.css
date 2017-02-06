@@ -91,7 +91,8 @@
 
 .home-content-div {
   position: absolute;
-  top: 15%;
+  margin-top: 80px;
+  top: 5%;
   left: 15%;
   width: 70%;
 }
@@ -118,7 +119,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .register-disclaimer-div {
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 80px;
   margin-bottom: 3rem;
 }
 
@@ -146,7 +147,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .login-title-div {
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 80px;
   margin-bottom: 3rem;
 }
 
