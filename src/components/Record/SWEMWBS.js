@@ -6,12 +6,14 @@ import Question from './Question'
 import SubmitMessage from '../Form/SubmitMessage'
 
 const SWEMWBS = ({
+  userId,
+  token,
   scores,
   isLoading,
   isSubmitted,
   submitError,
   updateScore,
-  resetState,
+  resetScores,
   submit
 }) => (
   <div>
@@ -26,11 +28,11 @@ const SWEMWBS = ({
 
 
     <div className="u-full-width SWEMWBS-buttons-div">
-      <button className="SWEMWBS-button" onClick={resetState}>Clear</button>
+      <button className="SWEMWBS-button" onClick={resetScores}>Clear</button>
 
       <button
         className="SWEMWBS-button button-primary"
-        onClick={() => submit(scores)}
+        onClick={() => submit(userId, token, scores)}
       >
         Submit
       </button>
@@ -47,12 +49,14 @@ const SWEMWBS = ({
 )
 
 SWEMWBS.propTypes = {
+  userId: PropTypes.number.isRequired,
+  token: PropTypes.string.isRequired,
   scores: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   isLoading: PropTypes.bool.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
   submitError: PropTypes.string.isRequired,
   updateScore: PropTypes.func.isRequired,
-  resetState: PropTypes.func.isRequired,
+  resetScores: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired
 }
 

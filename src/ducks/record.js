@@ -5,7 +5,7 @@ const UPDATE_SCORE = 'UPDATE_SCORE'
 const UPDATE_RECORD_IS_LOADING = 'UPDATE_RECORD_IS_LOADING'
 const UPDATE_RECORD_IS_SUBMITTED = 'UPDATE_RECORD_IS_SUBMITTED'
 const UPDATE_RECORD_SUBMIT_ERROR = 'UPDATE_RECORD_SUBMIT_ERROR'
-const RESET_RECORD_STATE = 'RESET_RECORD_STATE'
+const RESET_SCORES = 'RESET_SCORES'
 
 // Actions
 export const updateScore = (key, score) => {
@@ -37,9 +37,9 @@ export const updateSubmitError = submitError => {
   }
 }
 
-export const resetState = () => {
+export const resetScores = () => {
   return {
-    type: RESET_RECORD_STATE
+    type: RESET_SCORES
   }
 }
 
@@ -73,8 +73,11 @@ export default (state = initialState, action) => {
         ...state,
         submitError: action.submitError
       }
-    case RESET_RECORD_STATE:
-      return initialState
+    case RESET_SCORES:
+      return {
+        ...state,
+        scores: initialState.scores
+      }
     default:
       return state
   }
