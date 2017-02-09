@@ -1,8 +1,10 @@
 // Constants
 const UPDATE_SELECTED_EDIT_TAB = 'UPDATE_SELECTED_EDIT_TAB'
 const UPDATE_NEW_EMAIL = 'UPDATE_NEW_EMAIL'
-const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
+const UPDATE_EDIT_EMAIL_PASSWORD = 'UPDATE_EDIT_EMAIL_PASSWORD'
+const UPDATE_EDIT_PASSWORD_PASSWORD = 'UPDATE_EDIT_PASSWORD_PASSWORD'
 const UPDATE_NEW_PASSWORD = 'UPDATE_NEW_PASSWORD'
+const UPDATE_NEW_PASSWORD_CONFIRM = 'UPDATE_NEW_PASSWORD_CONFIRM'
 const UPDATE_IS_LOADING = 'UPDATE_IS_LOADING'
 const UPDATE_IS_SUBMITTED = 'UPDATE_IS_SUBMITTED'
 const UPDATE_SUBMIT_ERROR = 'UPDATE_SUBMIT_ERROR'
@@ -22,10 +24,17 @@ export const updateNewEmail = newEmail => {
   }
 }
 
-export const updatePassword = password => {
+export const updateEditEmailPassword = editEmailPassword => {
   return {
-    type: UPDATE_PASSWORD,
-    password
+    type: UPDATE_EDIT_EMAIL_PASSWORD,
+    editEmailPassword
+  }
+}
+
+export const updateEditPasswordPassword = editPasswordPassword => {
+  return {
+    type: UPDATE_EDIT_PASSWORD_PASSWORD,
+    editPasswordPassword
   }
 }
 
@@ -33,6 +42,13 @@ export const updateNewPassword = newPassword => {
   return {
     type: UPDATE_NEW_PASSWORD,
     newPassword
+  }
+}
+
+export const updateNewPasswordConfirm = newPasswordConfirm => {
+  return {
+    type: UPDATE_NEW_PASSWORD_CONFIRM,
+    newPasswordConfirm
   }
 }
 
@@ -61,8 +77,10 @@ export const updateSubmitError = submitError => {
 const initialState = {
   selectedEditTab: '',
   newEmail: '',
-  password: '',
+  editEmailPassword: '',
+  editPasswordPassword: '',
   newPassword: '',
+  newPasswordConfirm: '',
   isLoading: false,
   isSubmitted: false,
   submitError: ''
@@ -80,15 +98,25 @@ export default (state = initialState, action) => {
         ...state,
         newEmail: action.newEmail
       }
-    case UPDATE_PASSWORD:
+    case UPDATE_EDIT_EMAIL_PASSWORD:
       return {
         ...state,
-        password: action.password
+        editEmailPassword: action.editEmailPassword
+      }
+    case UPDATE_EDIT_PASSWORD_PASSWORD:
+      return {
+        ...state,
+        editPasswordPassword: action.editPasswordPassword
       }
     case UPDATE_NEW_PASSWORD:
       return {
         ...state,
         newPassword: action.newPassword
+      }
+    case UPDATE_NEW_PASSWORD_CONFIRM:
+      return {
+        ...state,
+        newPasswordConfirm: action.newPasswordConfirm
       }
     case UPDATE_IS_LOADING:
       return {

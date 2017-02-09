@@ -39,7 +39,11 @@ const EditEmail = ({
         submitUpdate(userId, token, newEmail, password)
       }}
     >
-      <EmailInput email={newEmail} updateEmail={updateNewEmail} />
+      <EmailInput
+        email={newEmail}
+        updateEmail={updateNewEmail}
+        label="New email"
+      />
 
       <PasswordInput password={password} updatePassword={updatePassword} />
 
