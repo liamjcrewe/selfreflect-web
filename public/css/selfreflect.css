@@ -274,6 +274,22 @@
   border: none;
 }
 
+.account-edit-form {
+  margin-left: 20%;
+  width: 60%;
+}
+
+.account-edit-buttons-div {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.account-edit-button {
+  width: 120px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 /* 'View account' tab
 ––––––––––––––––––––––––– */
 

@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 
-// import EditEmail from '../../containers/Account/EditEmail'
+import EditEmail from '../../containers/Account/EditEmail'
 // import EditPassword from '../../containers/Account/EditPassword'
 import ViewAccount from '../../containers/Account/ViewAccount'
 
 const getTab = selectedEditTab => {
   switch (selectedEditTab) {
     case 'email':
-      // return <EditEmail />
+      return <EditEmail />
     case 'password':
       // return <EditPassword />
     default:
