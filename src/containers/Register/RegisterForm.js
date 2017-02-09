@@ -9,7 +9,7 @@ import {
   updateIsLoading,
   updateIsSubmitted,
   updateSubmitError,
-  resetState
+  resetRegister
 } from '../../ducks/register'
 
 const register = (dispatch, email, password) => {
@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => {
     updateEmail: email => { dispatch(updateEmail(email)) },
     updatePassword: password => { dispatch(updatePassword(password)) },
     updateConfirm: confirm => { dispatch(updateConfirm(confirm)) },
-    resetState: () => { dispatch(resetState()) },
+    resetRegister: () => { dispatch(resetRegister()) },
     register: (email, password) => register(dispatch, email, password)
   }
 }
