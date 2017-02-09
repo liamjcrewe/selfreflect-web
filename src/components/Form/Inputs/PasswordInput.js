@@ -17,16 +17,17 @@ const getPasswordValidatonMessage = password => {
 
 const PasswordInput = ({ password, updatePassword, label }) => {
   const isValidPassword = validatePassword(password)
+  const passwordLabel = label || 'Password'
 
   return (
     <div>
-      <label htmlFor="password">{label || 'Password'}</label>
+      <label htmlFor={passwordLabel}>{passwordLabel}</label>
       <div className="row u-full-width">
         <input
           className="eight columns"
           type="password"
-          placeholder={label || 'Password'}
-          id="password"
+          placeholder={passwordLabel}
+          id={passwordLabel}
           value={password}
           onChange={event => updatePassword(event.target.value)}
         />

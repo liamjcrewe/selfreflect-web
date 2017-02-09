@@ -21,16 +21,17 @@ const getConfirmValidationMessage = (confirm, password) => {
 
 const ConfirmPasswordInput = ({ confirm, password, updateConfirm, label }) => {
   const isValidConfirm = validateConfirmPassword(confirm, password)
+  const confirmLabel = label || 'Confirm password'
 
   return (
     <div>
-      <label htmlFor="confirm">{label || 'Confirm password'}</label>
+      <label htmlFor={confirmLabel}>{confirmLabel}</label>
       <div className="row u-full-width">
         <input
           className="eight columns"
           type="password"
-          placeholder={label || 'Confirm password'}
-          id="confirm"
+          placeholder={confirmLabel}
+          id={confirmLabel}
           value={confirm}
           onChange={event => updateConfirm(event.target.value)}
         />

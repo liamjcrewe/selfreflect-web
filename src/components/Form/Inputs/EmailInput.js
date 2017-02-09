@@ -17,17 +17,18 @@ const getEmailValidationMessage = email => {
 
 const EmailInput = ({ email, updateEmail, label }) => {
   const isValidEmail = validateEmail(email)
+  const emailLabel = label || 'Email'
 
   return (
     <div>
-      <label htmlFor="email">{label || 'Email'}</label>
+      <label htmlFor={emailLabel}>{emailLabel}</label>
 
       <div className="row u-full-width">
         <input
           className="eight columns"
           type="email"
           placeholder="me@example.com"
-          id="email"
+          id={emailLabel}
           value={email}
           onChange={event => updateEmail(event.target.value)}
         />
