@@ -74,11 +74,6 @@ const submit = (dispatch, userId, token, scores) => {
 
       return dispatch(updateIsLoading(false))
     })
-  // submit to server
-  //
-  // onFail: update error message
-  //
-  // onSuccess: reset scores
 }
 
 const mapStateToProps = state => {
