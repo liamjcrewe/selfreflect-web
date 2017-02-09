@@ -252,3 +252,24 @@
 .answer-selected {
   background: #5CB85C;
 }
+
+/* 'Account' page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.account-title-div {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 3rem;
+}
+
+.account-title {
+  font-weight: 600;
+}
+
+.account-buttons-div {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.account-button-unselected {
+  border: none;
+}

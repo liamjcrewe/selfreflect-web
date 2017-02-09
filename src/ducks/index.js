@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
+import account from './account'
 import login from './login'
 import record from './record'
 import register from './register'
@@ -8,6 +9,7 @@ import token from './token'
 import user from './user'
 
 export default combineReducers({
+  account,
   login,
   record,
   register,
