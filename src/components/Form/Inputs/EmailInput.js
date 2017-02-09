@@ -15,12 +15,12 @@ const getEmailValidationMessage = email => {
   return '✓'
 }
 
-const EmailInput = ({ email, updateEmail }) => {
+const EmailInput = ({ email, updateEmail, label }) => {
   const isValidEmail = validateEmail(email)
 
   return (
     <div>
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email">{label || 'Email'}</label>
 
       <div className="row u-full-width">
         <input
@@ -41,7 +41,8 @@ const EmailInput = ({ email, updateEmail }) => {
 
 EmailInput.propTypes = {
   email: PropTypes.string.isRequired,
-  updateEmail: PropTypes.func.isRequired
+  updateEmail: PropTypes.func.isRequired,
+  label: PropTypes.string
 }
 
 export default EmailInput
