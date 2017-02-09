@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import EditEmail from '../../containers/Account/EditEmail'
-// import EditPassword from '../../containers/Account/EditPassword'
+import EditPassword from '../../containers/Account/EditPassword'
 import ViewAccount from '../../containers/Account/ViewAccount'
 
 const getTab = selectedEditTab => {
@@ -9,7 +9,7 @@ const getTab = selectedEditTab => {
     case 'email':
       return <EditEmail />
     case 'password':
-      // return <EditPassword />
+      return <EditPassword />
     default:
       return <ViewAccount />
   }
