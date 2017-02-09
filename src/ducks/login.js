@@ -4,7 +4,7 @@ const UPDATE_LOGIN_PASSWORD = 'UPDATE_LOGIN_PASSWORD'
 const UPDATE_LOGIN_IS_LOADING = 'UPDATE_LOGIN_IS_LOADING'
 const UPDATE_LOGIN_IS_SUBMITTED = 'UPDATE_LOGIN_IS_SUBMITTED'
 const UPDATE_LOGIN_SUBMIT_ERROR = 'UPDATE_LOGIN_SUBMIT_ERROR'
-const RESET_LOGIN_STATE = 'RESET_LOGIN_STATE'
+const RESET_LOGIN = 'RESET_LOGIN'
 
 // Actions
 export const updateEmail = email => {
@@ -42,9 +42,9 @@ export const updateSubmitError = submitError => {
   }
 }
 
-export const resetState = () => {
+export const resetLogin = () => {
   return {
-    type: RESET_LOGIN_STATE
+    type: RESET_LOGIN
   }
 }
 
@@ -84,7 +84,7 @@ export default (state = initialState, action) => {
         ...state,
         submitError: action.submitError
       }
-    case RESET_LOGIN_STATE:
+    case RESET_LOGIN:
       return initialState
     default:
       return state

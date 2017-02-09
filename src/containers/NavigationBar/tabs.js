@@ -24,7 +24,7 @@ export default {
     },
     {
       name: 'record',
-      label: 'Record mood'
+      label: 'Record'
     },
     {
       name: 'analysis',
@@ -32,7 +32,7 @@ export default {
     },
     {
       name: 'account',
-      label: 'Account managament'
+      label: 'Account'
     },
     {
       name: 'logout',

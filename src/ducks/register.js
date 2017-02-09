@@ -5,7 +5,7 @@ const UPDATE_REGISTER_CONFIRM = 'UPDATE_REGISTER_CONFIRM'
 const UPDATE_REGISTER_IS_LOADING = 'UPDATE_REGISTER_IS_LOADING'
 const UPDATE_REGISTER_IS_SUBMITTED = 'UPDATE_REGISTER_IS_SUBMITTED'
 const UPDATE_REGISTER_SUBMIT_ERROR = 'UPDATE_REGISTER_SUBMIT_ERROR'
-const RESET_REGISTER_STATE = 'RESET_REGISTER_STATE'
+const RESET_REGISTER = 'RESET_REGISTER'
 
 // Actions
 export const updateEmail = email => {
@@ -50,9 +50,9 @@ export const updateSubmitError = submitError => {
   }
 }
 
-export const resetState = () => {
+export const resetRegister = () => {
   return {
-    type: RESET_REGISTER_STATE
+    type: RESET_REGISTER
   }
 }
 
@@ -98,7 +98,7 @@ export default (state = initialState, action) => {
         ...state,
         submitError: action.submitError
       }
-    case RESET_REGISTER_STATE:
+    case RESET_REGISTER:
       return initialState
     default:
       return state

@@ -9,7 +9,7 @@ import {
   updateIsLoading,
   updateIsSubmitted,
   updateSubmitError,
-  resetState
+  resetLogin
 } from '../../ducks/login'
 
 import { updateId } from '../../ducks/user'
@@ -61,7 +61,7 @@ const login = (dispatch, email, password) => {
 
           dispatch(setSelectedTab('guide'))
 
-          dispatch(resetState())
+          dispatch(resetLogin())
         })
     })
     .catch(_ => {
