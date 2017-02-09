@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => {
     updateNewPasswordConfirm: newPassword => {
       dispatch(updateNewPasswordConfirm(newPassword))
     },
-    submitUpdate: (userId, token, email, password, newPassword) => {
+    savePassword: (userId, token, email, password, newPassword) => {
       submitUpdate(dispatch, userId, token, email, password, newPassword)
     }
   }

@@ -23,7 +23,7 @@ const EditEmail = ({
   submitError,
   updateNewEmail,
   updatePassword,
-  submitUpdate
+  saveEmail
 }) => {
   return (
     <form
@@ -36,7 +36,7 @@ const EditEmail = ({
           return
         }
 
-        submitUpdate(userId, token, newEmail, password)
+        saveEmail(userId, token, newEmail, password)
       }}
     >
       <EmailInput
@@ -88,7 +88,7 @@ EditEmail.propTypes = {
   submitError: PropTypes.string.isRequired,
   updateNewEmail: PropTypes.func.isRequired,
   updatePassword: PropTypes.func.isRequired,
-  submitUpdate: PropTypes.func.isRequired
+  saveEmail: PropTypes.func.isRequired
 }
 
 export default EditEmail
