@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import EditEmail from '../../components/Account/EditEmail'
-import submitUpdate from './submitUpdate'
+import { submitUpdateEmail } from './submitUpdate'
 import { updateNewEmail, updateEditEmailPassword } from '../../ducks/account'
 
 const mapStateToProps = state => {
@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
     updateNewEmail: newEmail => { dispatch(updateNewEmail(newEmail)) },
     updatePassword: password => { dispatch(updateEditEmailPassword(password)) },
     saveEmail: (userId, token, newEmail, password) => {
-      submitUpdate(dispatch, userId, token, newEmail, password, password)
+      submitUpdateEmail(dispatch, userId, token, newEmail, password)
     }
   }
 }

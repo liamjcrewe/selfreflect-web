@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import EditPassword from '../../components/Account/EditPassword'
-import submitUpdate from './submitUpdate'
+import { submitUpdatePassword } from './submitUpdate'
 import {
   updateEditPasswordPassword,
   updateNewPassword,
@@ -34,7 +34,14 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateNewPasswordConfirm(newPassword))
     },
     savePassword: (userId, token, email, password, newPassword) => {
-      submitUpdate(dispatch, userId, token, email, password, newPassword)
+      submitUpdatePassword(
+        dispatch,
+        userId,
+        token,
+        email,
+        password,
+        newPassword
+      )
     }
   }
 }
