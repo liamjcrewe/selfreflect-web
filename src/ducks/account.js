@@ -1,13 +1,21 @@
 // Constants
 const UPDATE_SELECTED_EDIT_TAB = 'UPDATE_SELECTED_EDIT_TAB'
 const UPDATE_NEW_EMAIL = 'UPDATE_NEW_EMAIL'
+
 const UPDATE_EDIT_EMAIL_PASSWORD = 'UPDATE_EDIT_EMAIL_PASSWORD'
 const UPDATE_EDIT_PASSWORD_PASSWORD = 'UPDATE_EDIT_PASSWORD_PASSWORD'
+
 const UPDATE_NEW_PASSWORD = 'UPDATE_NEW_PASSWORD'
 const UPDATE_NEW_PASSWORD_CONFIRM = 'UPDATE_NEW_PASSWORD_CONFIRM'
-const UPDATE_IS_LOADING = 'UPDATE_IS_LOADING'
-const UPDATE_IS_SUBMITTED = 'UPDATE_IS_SUBMITTED'
-const UPDATE_SUBMIT_ERROR = 'UPDATE_SUBMIT_ERROR'
+
+const UPDATE_EDIT_EMAIL_IS_LOADING = 'UPDATE_EDIT_EMAIL_IS_LOADING'
+const UPDATE_EDIT_PASSWORD_IS_LOADING = 'UPDATE_EDIT_PASSWORD_IS_LOADING'
+
+const UPDATE_EDIT_EMAIL_IS_SUBMITTED = 'UPDATE_EDIT_EMAIL_IS_SUBMITTED'
+const UPDATE_EDIT_PASSWORD_IS_SUBMITTED = 'UPDATE_EDIT_PASSWORD_IS_SUBMITTED'
+
+const UPDATE_EDIT_EMAIL_SUBMIT_ERROR = 'UPDATE_EDIT_EMAIL_SUBMIT_ERROR'
+const UPDATE_EDIT_PASSWORD_SUBMIT_ERROR = 'UPDATE_EDIT_PASSWORD_SUBMIT_ERROR'
 
 // Actions
 export const updateSelectedEditTab = selectedEditTab => {
@@ -52,24 +60,45 @@ export const updateNewPasswordConfirm = newPasswordConfirm => {
   }
 }
 
-export const updateIsLoading = isLoading => {
+export const updateEditEmailIsLoading = editEmailIsLoading => {
   return {
-    type: UPDATE_IS_LOADING,
-    isLoading
+    type: UPDATE_EDIT_EMAIL_IS_LOADING,
+    editEmailIsLoading
   }
 }
 
-export const updateIsSubmitted = isSubmitted => {
+export const updateEditPasswordIsLoading = editPasswordIsLoading => {
   return {
-    type: UPDATE_IS_SUBMITTED,
-    isSubmitted
+    type: UPDATE_EDIT_PASSWORD_IS_LOADING,
+    editPasswordIsLoading
   }
 }
 
-export const updateSubmitError = submitError => {
+export const updateEditEmailIsSubmitted = editEmailIsSubmitted => {
   return {
-    type: UPDATE_SUBMIT_ERROR,
-    submitError
+    type: UPDATE_EDIT_EMAIL_IS_SUBMITTED,
+    editEmailIsSubmitted
+  }
+}
+
+export const updateEditPasswordIsSubmitted = editPasswordIsSubmitted => {
+  return {
+    type: UPDATE_EDIT_PASSWORD_IS_SUBMITTED,
+    editPasswordIsSubmitted
+  }
+}
+
+export const updateEditEmailSubmitError = editEmailSubmitError => {
+  return {
+    type: UPDATE_EDIT_EMAIL_SUBMIT_ERROR,
+    editEmailSubmitError
+  }
+}
+
+export const updateEditPasswordSubmitError = editPasswordSubmitError => {
+  return {
+    type: UPDATE_EDIT_PASSWORD_SUBMIT_ERROR,
+    editPasswordSubmitError
   }
 }
 
@@ -81,9 +110,12 @@ const initialState = {
   editPasswordPassword: '',
   newPassword: '',
   newPasswordConfirm: '',
-  isLoading: false,
-  isSubmitted: false,
-  submitError: ''
+  editEmailIsLoading: false,
+  editPasswordIsLoading: false,
+  editEmailIsSubmitted: false,
+  editPasswordIsSubmitted: false,
+  editEmailSubmitError: '',
+  editPasswordSubmitError: ''
 }
 
 export default (state = initialState, action) => {
@@ -118,20 +150,35 @@ export default (state = initialState, action) => {
         ...state,
         newPasswordConfirm: action.newPasswordConfirm
       }
-    case UPDATE_IS_LOADING:
+    case UPDATE_EDIT_EMAIL_IS_LOADING:
       return {
         ...state,
-        isLoading: action.isLoading
+        editEmailIsLoading: action.editEmailIsLoading
       }
-    case UPDATE_IS_SUBMITTED:
+    case UPDATE_EDIT_PASSWORD_IS_LOADING:
       return {
         ...state,
-        isSubmitted: action.isSubmitted
+        editPasswordIsLoading: action.editPasswordIsLoading
       }
-    case UPDATE_SUBMIT_ERROR:
+    case UPDATE_EDIT_EMAIL_IS_SUBMITTED:
       return {
         ...state,
-        submitError: action.submitError
+        editEmailIsSubmitted: action.editEmailIsSubmitted
+      }
+    case UPDATE_EDIT_PASSWORD_IS_SUBMITTED:
+      return {
+        ...state,
+        editPasswordIsSubmitted: action.editPasswordIsSubmitted
+      }
+    case UPDATE_EDIT_EMAIL_SUBMIT_ERROR:
+      return {
+        ...state,
+        editEmailSubmitError: action.editEmailSubmitError
+      }
+    case UPDATE_EDIT_PASSWORD_SUBMIT_ERROR:
+      return {
+        ...state,
+        editPasswordSubmitError: action.editPasswordSubmitError
       }
     default:
       return state

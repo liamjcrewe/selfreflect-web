@@ -11,9 +11,9 @@ const mapStateToProps = state => {
     email: state.user.email,
     newEmail: state.account.newEmail,
     password: state.account.editEmailPassword,
-    isLoading: state.account.isLoading,
-    isSubmitted: state.account.isSubmitted,
-    submitError: state.account.submitError
+    isLoading: state.account.editEmailIsLoading,
+    isSubmitted: state.account.editEmailIsSubmitted,
+    submitError: state.account.editEmailSubmitError
   }
 }
 

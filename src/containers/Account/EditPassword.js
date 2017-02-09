@@ -16,9 +16,9 @@ const mapStateToProps = state => {
     password: state.account.editPasswordPassword,
     newPassword: state.account.newPassword,
     newPasswordConfirm: state.account.newPasswordConfirm,
-    isLoading: state.account.isLoading,
-    isSubmitted: state.account.isSubmitted,
-    submitError: state.account.submitError
+    isLoading: state.account.editPasswordIsLoading,
+    isSubmitted: state.account.editPasswordIsSubmitted,
+    submitError: state.account.editPasswordSubmitError
   }
 }
 
