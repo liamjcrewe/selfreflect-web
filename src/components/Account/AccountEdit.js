@@ -2,19 +2,17 @@ import React, { PropTypes } from 'react'
 
 // import EditEmail from '../../containers/Account/EditEmail'
 // import EditPassword from '../../containers/Account/EditPassword'
-// import ViewAccount from '../../containers/Account/ViewAccount'
+import ViewAccount from '../../containers/Account/ViewAccount'
 
 const getTab = selectedEditTab => {
-  return <div></div>
-
-  // switch (selectedEditTab) {
-  //   case 'email':
-  //     return <EditEmail />
-  //   case 'password':
-  //     return <EditPassword />
-  //   default:
-  //     return <ViewAccount />
-  // }
+  switch (selectedEditTab) {
+    case 'email':
+      // return <EditEmail />
+    case 'password':
+      // return <EditPassword />
+    default:
+      return <ViewAccount />
+  }
 }
 
 const AccountEdit = ({ selectedEditTab, updateSelectedEditTab }) => {
@@ -58,7 +56,9 @@ const AccountEdit = ({ selectedEditTab, updateSelectedEditTab }) => {
         </button>
 
       </div>
-      {getTab(selectedEditTab)}
+      <div className="container">
+        {getTab(selectedEditTab)}
+      </div>
     </div>
   )
 }

@@ -273,3 +273,31 @@
 .account-button-unselected {
   border: none;
 }
+
+/* 'View account' tab
+––––––––––––––––––––––––– */
+
+.view-account-div {
+  padding-bottom: 2px;
+}
+
+.view-account-left {
+  font-weight: 600;
+  padding-right: 1rem;
+  text-align: center;
+}
+
+.view-account-right {
+  text-align: center;
+}
+
+@media (min-width: 550px) {
+  .view-account-left {
+    text-align: right;
+  }
+
+  .view-account-right {
+    padding-left: 1rem;
+    text-align: left;
+  }
+}
