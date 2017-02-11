@@ -67,8 +67,10 @@ export default () => {
     const token = store.getState().token
     const nowInSeconds = Math.floor(Date.now() / 1000)
 
-    // If no token, or if token going to expire in more than an hour, do nothing
-    if (!token.value || (token.exp - 3600 > nowInSeconds)) {
+    // If no token, expired token, or if over an hour until expiry, do nothing
+    if (!token.value
+        || token.exp < nowInSeconds
+        || token.exp > nowInSeconds + 3600) {
       return
     }
 
