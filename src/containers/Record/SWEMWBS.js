@@ -19,7 +19,7 @@ import SWEMWBS from '../../components/Record/SWEMWBS'
 const submit = (dispatch, userId, token, scores) => {
   // If any question unanswered, do nothing
   if (contains(0, scores)) {
-    return dispatch(updateSubmitError('You must answer all questions'))
+    return
   }
 
   dispatch(updateIsLoading(true))
