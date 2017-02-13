@@ -5,6 +5,7 @@ import Register from './Register'
 import Login from './Login'
 import Four0Four from './Four0Four'
 import Record from './Record'
+import Account from './Account'
 
 const getBody = selectedTab => {
   switch (selectedTab) {
@@ -21,7 +22,7 @@ const getBody = selectedTab => {
     case 'analysis':
       return <div>analysis</div>
     case 'account':
-      return <div>account</div>
+      return <Account />
     default:
       return <Four0Four />
   }

@@ -19,18 +19,19 @@ const getConfirmValidationMessage = (confirm, password) => {
   return '✓'
 }
 
-const ConfirmPasswordInput = ({ confirm, password, updateConfirm }) => {
+const ConfirmPasswordInput = ({ confirm, password, updateConfirm, label }) => {
   const isValidConfirm = validateConfirmPassword(confirm, password)
+  const confirmLabel = label || 'Confirm password'
 
   return (
     <div>
-      <label htmlFor="confirm">Confirm password</label>
+      <label htmlFor={confirmLabel}>{confirmLabel}</label>
       <div className="row u-full-width">
         <input
           className="eight columns"
           type="password"
-          placeholder="Confirm password"
-          id="confirm"
+          placeholder={confirmLabel}
+          id={confirmLabel}
           value={confirm}
           onChange={event => updateConfirm(event.target.value)}
         />
@@ -46,7 +47,8 @@ const ConfirmPasswordInput = ({ confirm, password, updateConfirm }) => {
 ConfirmPasswordInput.propTypes = {
   confirm: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  updateConfirm: PropTypes.func.isRequired
+  updateConfirm: PropTypes.func.isRequired,
+  label: PropTypes.string
 }
 
 export default ConfirmPasswordInput

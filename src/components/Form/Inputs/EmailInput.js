@@ -15,19 +15,20 @@ const getEmailValidationMessage = email => {
   return '✓'
 }
 
-const EmailInput = ({ email, updateEmail }) => {
+const EmailInput = ({ email, updateEmail, label }) => {
   const isValidEmail = validateEmail(email)
+  const emailLabel = label || 'Email'
 
   return (
     <div>
-      <label htmlFor="email">Email</label>
+      <label htmlFor={emailLabel}>{emailLabel}</label>
 
       <div className="row u-full-width">
         <input
           className="eight columns"
           type="email"
           placeholder="me@example.com"
-          id="email"
+          id={emailLabel}
           value={email}
           onChange={event => updateEmail(event.target.value)}
         />
@@ -41,7 +42,8 @@ const EmailInput = ({ email, updateEmail }) => {
 
 EmailInput.propTypes = {
   email: PropTypes.string.isRequired,
-  updateEmail: PropTypes.func.isRequired
+  updateEmail: PropTypes.func.isRequired,
+  label: PropTypes.string
 }
 
 export default EmailInput
