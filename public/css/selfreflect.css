@@ -317,3 +317,46 @@
     text-align: left;
   }
 }
+
+/* 'AccountAPIs' section
+––––––––––––––––––––––––– */
+.account-apis-title {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.api-connect-div {
+  min-height: 250px;
+  border-radius: 22px;
+}
+
+.twitter-div {
+  border: 1px solid #1da1f3;
+}
+
+.twitter-content-div {
+  margin-top: 2rem;
+}
+
+.api-connect-title {
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: 600;
+  background: #1da1f3;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.coming-soon-text {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}

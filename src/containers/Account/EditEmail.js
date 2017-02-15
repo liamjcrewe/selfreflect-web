@@ -19,8 +19,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateNewEmail: newEmail => { dispatch(updateNewEmail(newEmail)) },
-    updatePassword: password => { dispatch(updateEditEmailPassword(password)) },
+    updateNewEmail: newEmail => dispatch(updateNewEmail(newEmail)),
+    updatePassword: password => dispatch(updateEditEmailPassword(password)),
     saveEmail: (userId, token, newEmail, password) => {
       submitUpdateEmail(dispatch, userId, token, newEmail, password)
     }
