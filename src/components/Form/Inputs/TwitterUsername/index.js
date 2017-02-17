@@ -21,7 +21,7 @@ const getUsernameValidatonMessage = username => {
 
 const TwitterUsernameInput = ({ username, updateUsername, label }) => {
   const isValidUsername = validateTwitterUsername(username)
-  const twitterUsernameLabel = label || 'Twitter username (not including @)'
+  const twitterUsernameLabel = label || 'Twitter username (not including \'@\')'
 
   return (
     <div>

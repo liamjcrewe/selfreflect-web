@@ -38,7 +38,6 @@ const Twitter = ({
           <TwitterUsernameInput
             username={username}
             updateUsername={updateUsername}
-            label="Username"
           />
 
           <div className="account-buttons-div">
