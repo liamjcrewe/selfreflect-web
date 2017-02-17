@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
-import EditEmail from '../../components/Account/EditEmail'
-import { submitUpdateEmail } from './submitUpdate'
-import { updateNewEmail, updateEditEmailPassword } from '../../ducks/account'
+import EditEmail from '../../../components/Account/AccountEdit/EditEmail'
+import { submitUpdateEmail } from '../submitUpdate'
+import { updateNewEmail, updateEditEmailPassword } from '../../../ducks/account'
 
 const mapStateToProps = state => {
   return {

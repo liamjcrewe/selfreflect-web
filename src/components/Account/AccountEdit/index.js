@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 
-import EditEmail from '../../containers/Account/EditEmail'
-import EditPassword from '../../containers/Account/EditPassword'
-import ViewAccount from '../../containers/Account/ViewAccount'
+import EditEmail from '../../../containers/Account/AccountEdit/EditEmail'
+import EditPassword from '../../../containers/Account/AccountEdit/EditPassword'
+import ViewAccount from '../../../containers/Account/AccountEdit/ViewAccount'
 
 const getTab = selectedEditTab => {
   switch (selectedEditTab) {

@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 
-import Twitter from '../../components/Account/Twitter'
-import { updateUser } from '../../ducks/user'
+import Twitter from '../../../components/Account/AccountAPIs/Twitter'
+import { updateUser } from '../../../ducks/user'
 import {
   updateUsername,
   updateIsLoading,
   updateIsSubmitted,
   updateSubmitError
-} from '../../ducks/twitter'
+} from '../../../ducks/twitter'
 
 const submitUsername = (dispatch, username) => {
   return true

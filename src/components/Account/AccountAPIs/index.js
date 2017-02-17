@@ -1,13 +1,14 @@
 import React from 'react'
 
-import Twitter from '../../containers/Account/Twitter'
+import Twitter from '../../../containers/Account/AccountAPIs/Twitter'
 import ComingSoon from './ComingSoon'
-import AccountAPIsTitle from './AccountAPIsTitle'
 
 export default () => {
   return (
     <div className="container">
-      <AccountAPIsTitle />
+      <div className="account-apis-title">
+        Connect existing apps
+      </div>
       <Twitter />
       <ComingSoon />
       <ComingSoon />

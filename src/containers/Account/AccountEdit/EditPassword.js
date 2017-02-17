@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 
-import EditPassword from '../../components/Account/EditPassword'
-import { submitUpdatePassword } from './submitUpdate'
+import EditPassword from '../../../components/Account/AccountEdit/EditPassword'
+import { submitUpdatePassword } from '../submitUpdate'
 import {
   updateEditPasswordPassword,
   updateNewPassword,
   updateNewPasswordConfirm
-} from '../../ducks/account'
+} from '../../../ducks/account'
 
 const mapStateToProps = state => {
   return {

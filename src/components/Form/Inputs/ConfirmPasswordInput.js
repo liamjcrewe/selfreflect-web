@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import { validClass, errorClass } from './inputValidationClasses'
-import validateConfirmPassword from './validators/confirmPassword'
+import validateConfirm from './validators/confirmPassword'
 
 const getConfirmValidationMessage = (confirm, password) => {
   if (!confirm) {
@@ -20,7 +20,7 @@ const getConfirmValidationMessage = (confirm, password) => {
 }
 
 const ConfirmPasswordInput = ({ confirm, password, updateConfirm, label }) => {
-  const isValidConfirm = validateConfirmPassword(confirm, password)
+  const isValidConfirm = validateConfirm(confirm, password)
   const confirmLabel = label || 'Confirm password'
 
   return (
