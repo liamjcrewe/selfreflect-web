@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
-import { validClass, errorClass } from './inputValidationClasses'
-import validateConfirm from './validators/confirmPassword'
+import { validClass, errorClass } from '../inputValidationClasses'
+import validateConfirm from './validator'
 
 const getConfirmValidationMessage = (confirm, password) => {
   if (!confirm) {

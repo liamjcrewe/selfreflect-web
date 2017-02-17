@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 
-import validatePassword from '../../Form/Inputs/validators/password'
-import validateConfirm from '../../Form/Inputs/validators/confirmPassword'
+import validatePassword from '../../Form/Inputs/Password/validator'
+import validateConfirm from '../../Form/Inputs/ConfirmPassword/validator'
 
-import PasswordInput from '../../Form/Inputs/PasswordInput'
-import ConfirmPasswordInput from '../../Form/Inputs/ConfirmPasswordInput'
+import PasswordInput from '../../Form/Inputs/Password'
+import ConfirmPasswordInput from '../../Form/Inputs/ConfirmPassword'
 
 import SubmitMessage from '../../Form/SubmitMessage'
 

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import EmailInput from '../../Form/Inputs/EmailInput'
+import EmailInput from '../../Form/Inputs/Email'
 import SubmitMessage from '../../Form/SubmitMessage'
 
 const allInputsValid = username => {
