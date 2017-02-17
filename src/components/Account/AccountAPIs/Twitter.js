@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react'
 
-import EmailInput from '../../Form/Inputs/Email'
+import TwitterUsernameInput from '../../Form/Inputs/TwitterUsername'
+import validateUsername from '../../Form/Inputs/TwitterUsername/validator'
 import SubmitMessage from '../../Form/SubmitMessage'
 
 const allInputsValid = username => {
-  return true
+  return username && validateUsername(username)
 }
 
 const Twitter = ({
@@ -15,22 +16,40 @@ const Twitter = ({
   isSubmitted,
   submitError,
   updateUsername,
-  submitUsername
+  saveUsername
 }) => {
   return (
     <div className="api-connect-div twitter-div">
       <div className="api-connect-title">Twitter</div>
+
       <div className="twitter-content-div">
-        <form className="account-edit-form">
-          <EmailInput label="Username" />
+        <form
+          className="account-edit-form"
+          onSubmit={event => {
+            event.preventDefault()
+
+            if (!allInputsValid(username)) {
+              return
+            }
+
+            saveUsername(userId, token, username)
+          }}
+        >
+          <TwitterUsernameInput
+            username={username}
+            updateUsername={updateUsername}
+            label="Username"
+          />
+
           <div className="account-buttons-div">
             <input className="button-primary" type="submit" value="save" />
           </div>
+
           <div className="u-full-width submit-message">
             <SubmitMessage
-            isLoading={isLoading}
-            isSubmitted={isSubmitted}
-            submitError={submitError}
+              isLoading={isLoading}
+              isSubmitted={isSubmitted}
+              submitError={submitError}
             />
           </div>
         </form>
@@ -47,7 +66,7 @@ Twitter.propTypes = {
   isSubmitted: PropTypes.bool.isRequired,
   submitError: PropTypes.string.isRequired,
   updateUsername: PropTypes.func.isRequired,
-  submitUsername: PropTypes.func.isRequired
+  saveUsername: PropTypes.func.isRequired
 }
 
 export default Twitter

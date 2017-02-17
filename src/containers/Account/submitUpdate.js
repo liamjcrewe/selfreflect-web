@@ -151,3 +151,14 @@ export const submitUpdatePassword = (
       return dispatch(updateEditPasswordIsLoading(false))
     })
 }
+
+export const submitUpdateTwitterUsername = (
+  dispatch,
+  userId,
+  token,
+  username
+) => {
+  console.log(userId)
+  console.log(token)
+  console.log(username)
+}

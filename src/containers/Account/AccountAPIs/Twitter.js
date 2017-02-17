@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 
 import Twitter from '../../../components/Account/AccountAPIs/Twitter'
+import { submitUpdateTwitterUsername } from '../submitUpdate'
 import { updateUser } from '../../../ducks/user'
 import {
   updateUsername,
@@ -8,10 +9,6 @@ import {
   updateIsSubmitted,
   updateSubmitError
 } from '../../../ducks/twitter'
-
-const submitUsername = (dispatch, username) => {
-  return true
-}
 
 const mapStateToProps = state => {
   return {
@@ -27,7 +24,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     updateUsername: username => dispatch(updateUsername(username)),
-    submitUsername: username => submitUsername(dispatch, username)
+    saveUsername: (userId, token, username) => {
+      submitUpdateTwitterUsername(dispatch, userId, token, username)
+    }
   }
 }
 
