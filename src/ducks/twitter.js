@@ -1,14 +1,22 @@
 // Constants
+const UPDATE_TWITTER_PASSWORD = 'UPDATE_TWITTER_PASSWORD'
 const UPDATE_TWITTER_USERNAME = 'UPDATE_TWITTER_USERNAME'
 const UPDATE_TWITTER_IS_LOADING = 'UPDATE_TWITTER_IS_LOADING'
 const UPDATE_TWITTER_IS_SUBMITTED = 'UPDATE_TWITTER_IS_SUBMITTED'
 const UPDATE_TWITTER_SUBMIT_ERROR = 'UPDATE_TWITTER_SUBMIT_ERROR'
 
 // Actions
-export const updateUsername = username => {
+export const updatePassword = password => {
+  return {
+    type: UPDATE_TWITTER_PASSWORD,
+    password
+  }
+}
+
+export const updateTwitterUsername = twitter_username => {
   return {
     type: UPDATE_TWITTER_USERNAME,
-    username
+    twitter_username
   }
 }
 
@@ -35,7 +43,8 @@ export const updateSubmitError = submitError => {
 
 // Reducer
 const initialState = {
-  username: '',
+  password: '',
+  twitter_username: '',
   isLoading: false,
   isSubmitted: false,
   submitError: ''
@@ -43,10 +52,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case UPDATE_TWITTER_PASSWORD:
+      return {
+        ...state,
+        password: action.password
+      }
     case UPDATE_TWITTER_USERNAME:
       return {
         ...state,
-        username: action.username
+        twitter_username: action.twitter_username
       }
     case UPDATE_TWITTER_IS_LOADING:
       return {

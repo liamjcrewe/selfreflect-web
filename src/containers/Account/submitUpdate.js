@@ -168,9 +168,10 @@ export const submitUpdateTwitterUsername = (
   dispatch,
   userId,
   token,
-  username
+  email,
+  password,
+  twitter_username
 ) => {
-  console.log(userId)
-  console.log(token)
-  console.log(username)
+  console.log(password)
+  console.log(twitter_username)
 }

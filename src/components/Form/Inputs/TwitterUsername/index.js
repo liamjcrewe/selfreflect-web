@@ -3,24 +3,28 @@ import React, { PropTypes } from 'react'
 import { validClass, errorClass } from '../inputValidationClasses'
 import validateTwitterUsername from './validator'
 
-const getUsernameValidatonMessage = username => {
-  if (!username) {
+const getUsernameValidatonMessage = twitter_username => {
+  if (!twitter_username) {
     return '*Required'
   }
 
-  if (username.length > 15) {
+  if (twitter_username.length > 15) {
     return 'Username cannot be longer than 15 characters'
   }
 
-  if (!validateTwitterUsername(username)) {
+  if (!validateTwitterUsername(twitter_username)) {
     return 'Invalid characters (allowed: 0-9, a-z and _)'
   }
 
   return '✓'
 }
 
-const TwitterUsernameInput = ({ username, updateUsername, label }) => {
-  const isValidUsername = validateTwitterUsername(username)
+const TwitterUsernameInput = ({
+  twitter_username,
+  updateTwitterUsername,
+  label
+}) => {
+  const isValidUsername = validateTwitterUsername(twitter_username)
   const twitterUsernameLabel = label || 'Twitter username (not including \'@\')'
 
   return (
@@ -32,11 +36,11 @@ const TwitterUsernameInput = ({ username, updateUsername, label }) => {
           className="eight columns"
           placeholder={twitterUsernameLabel}
           id={twitterUsernameLabel}
-          value={username}
-          onChange={event => updateUsername(event.target.value)}
+          value={twitter_username}
+          onChange={event => updateTwitterUsername(event.target.value)}
         />
         <div className={isValidUsername ? validClass : errorClass}>
-          {getUsernameValidatonMessage(username)}
+          {getUsernameValidatonMessage(twitter_username)}
         </div>
       </div>
     </div>
@@ -45,7 +49,7 @@ const TwitterUsernameInput = ({ username, updateUsername, label }) => {
 
 TwitterUsernameInput.propTypes = {
   username: PropTypes.string.isRequired,
-  updateUsername: PropTypes.func.isRequired,
+  updateTwitterUsername: PropTypes.func.isRequired,
   label: PropTypes.string
 }
 

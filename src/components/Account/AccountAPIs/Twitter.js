@@ -1,21 +1,26 @@
 import React, { PropTypes } from 'react'
 
 import TwitterUsernameInput from '../../Form/Inputs/TwitterUsername'
+import PasswordInput from '../../Form/Inputs/Password'
+import validatePassword from '../../Form/Inputs/Password/validator'
 import validateUsername from '../../Form/Inputs/TwitterUsername/validator'
 import SubmitMessage from '../../Form/SubmitMessage'
 
-const allInputsValid = username => {
-  return username && validateUsername(username)
+const allInputsValid = (password, twitter_username) => {
+  return validatePassword(password) && validateUsername(twitter_username)
 }
 
 const Twitter = ({
   userId,
   token,
-  username,
+  email,
+  password,
+  twitter_username,
   isLoading,
   isSubmitted,
   submitError,
-  updateUsername,
+  updatePassword,
+  updateTwitterUsername,
   saveUsername
 }) => {
   return (
@@ -28,17 +33,19 @@ const Twitter = ({
           onSubmit={event => {
             event.preventDefault()
 
-            if (!allInputsValid(username)) {
+            if (!allInputsValid(password, twitter_username)) {
               return
             }
 
-            saveUsername(userId, token, username)
+            saveUsername(userId, token, email, password, twitter_username)
           }}
         >
           <TwitterUsernameInput
-            username={username}
-            updateUsername={updateUsername}
+            twitter_username={twitter_username}
+            updateTwitterUsername={updateTwitterUsername}
           />
+
+          <PasswordInput password={password} updatePassword={updatePassword} />
 
           <div className="account-buttons-div">
             <input className="button-primary" type="submit" value="save" />
@@ -60,11 +67,14 @@ const Twitter = ({
 Twitter.propTypes = {
   userId: PropTypes.number.isRequired,
   token: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  twitter_username: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
   submitError: PropTypes.string.isRequired,
-  updateUsername: PropTypes.func.isRequired,
+  updatePassword: PropTypes.func.isRequired,
+  updateTwitterUsername: PropTypes.func.isRequired,
   saveUsername: PropTypes.func.isRequired
 }
 

@@ -4,7 +4,8 @@ import Twitter from '../../../components/Account/AccountAPIs/Twitter'
 import { submitUpdateTwitterUsername } from '../submitUpdate'
 import { updateUser } from '../../../ducks/user'
 import {
-  updateUsername,
+  updatePassword,
+  updateTwitterUsername,
   updateIsLoading,
   updateIsSubmitted,
   updateSubmitError
@@ -14,7 +15,9 @@ const mapStateToProps = state => {
   return {
     userId: state.user.id,
     token: state.token.value,
-    username: state.twitter.username,
+    email: state.user.email,
+    password: state.twitter.password,
+    twitter_username: state.twitter.twitter_username,
     isLoading: state.twitter.isLoading,
     isSubmitted: state.twitter.isSubmitted,
     submitError: state.twitter.submitError
@@ -23,9 +26,19 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateUsername: username => dispatch(updateUsername(username)),
-    saveUsername: (userId, token, username) => {
-      submitUpdateTwitterUsername(dispatch, userId, token, username)
+    updatePassword: password => dispatch(updatePassword(password)),
+    updateTwitterUsername: twitter_username => {
+      dispatch(updateTwitterUsername(twitter_username))
+    },
+    saveUsername: (userId, token, email, password, twitter_username) => {
+      submitUpdateTwitterUsername(
+        dispatch,
+        userId,
+        token,
+        email,
+        password,
+        twitter_username
+      )
     }
   }
 }
