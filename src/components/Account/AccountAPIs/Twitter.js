@@ -48,7 +48,22 @@ const Twitter = ({
           <PasswordInput password={password} updatePassword={updatePassword} />
 
           <div className="account-buttons-div">
-            <input className="button-primary" type="submit" value="save" />
+            <button
+              className="account-edit-button"
+              type="button"
+              onClick={() => {
+                updatePassword('')
+                updateTwitterUsername('')
+              }}
+            >
+              Clear
+            </button>
+
+            <input
+              className="button-primary account-edit-button"
+              type="submit"
+              value="save"
+            />
           </div>
 
           <div className="u-full-width submit-message">
