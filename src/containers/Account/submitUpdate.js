@@ -21,7 +21,8 @@ export const submitUpdateEmail = (
   userId,
   token,
   newEmail,
-  password
+  password,
+  twitter_username
 ) => {
   dispatch(updateEditEmailIsLoading(true))
   dispatch(updateEditEmailIsSubmitted(true))
@@ -39,7 +40,8 @@ export const submitUpdateEmail = (
     body: JSON.stringify({
       'email': newEmail,
       'oldPassword': password,
-      'newPassword': password
+      'newPassword': password,
+      twitter_username
     })
   })
     .then(response => {
@@ -66,7 +68,11 @@ export const submitUpdateEmail = (
       // Success
       return response.json()
         .then(json => {
-          dispatch(updateUser({ id: json.id, email: json.email }))
+          dispatch(updateUser({
+            id: json.id,
+            email: json.email,
+            twitter_username: json.twitter_username
+          }))
 
           dispatch(updateNewEmail(''))
           dispatch(updateEditEmailPassword(''))
@@ -89,7 +95,8 @@ export const submitUpdatePassword = (
   token,
   email,
   password,
-  newPassword
+  newPassword,
+  twitter_username
 ) => {
   dispatch(updateEditPasswordIsLoading(true))
   dispatch(updateEditPasswordIsSubmitted(true))
@@ -107,7 +114,8 @@ export const submitUpdatePassword = (
     body: JSON.stringify({
       'email': email,
       'oldPassword': password,
-      'newPassword': newPassword
+      'newPassword': newPassword,
+      twitter_username
     })
   })
     .then(response => {
@@ -134,7 +142,11 @@ export const submitUpdatePassword = (
       // Success
       return response.json()
         .then(json => {
-          dispatch(updateUser({ id: json.id, email: json.email }))
+          dispatch(updateUser({
+            id: json.id,
+            email: json.email,
+            twitter_username: json.twitter_username
+          }))
 
           dispatch(updateEditPasswordPassword(''))
           dispatch(updateNewPassword(''))

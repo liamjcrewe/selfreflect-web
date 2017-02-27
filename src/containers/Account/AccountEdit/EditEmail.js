@@ -11,6 +11,7 @@ const mapStateToProps = state => {
     email: state.user.email,
     newEmail: state.account.newEmail,
     password: state.account.editEmailPassword,
+    twitter_username: state.user.twitter_username,
     isLoading: state.account.editEmailIsLoading,
     isSubmitted: state.account.editEmailIsSubmitted,
     submitError: state.account.editEmailSubmitError
@@ -21,8 +22,15 @@ const mapDispatchToProps = dispatch => {
   return {
     updateNewEmail: newEmail => dispatch(updateNewEmail(newEmail)),
     updatePassword: password => dispatch(updateEditEmailPassword(password)),
-    saveEmail: (userId, token, newEmail, password) => {
-      submitUpdateEmail(dispatch, userId, token, newEmail, password)
+    saveEmail: (userId, token, newEmail, password, twitter_username) => {
+      submitUpdateEmail(
+        dispatch,
+        userId,
+        token,
+        newEmail,
+        password,
+        twitter_username
+      )
     }
   }
 }

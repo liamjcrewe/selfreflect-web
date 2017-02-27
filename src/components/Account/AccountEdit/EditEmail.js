@@ -18,6 +18,7 @@ const EditEmail = ({
   email,
   newEmail,
   password,
+  twitter_username,
   isLoading,
   isSubmitted,
   submitError,
@@ -36,7 +37,7 @@ const EditEmail = ({
           return
         }
 
-        saveEmail(userId, token, newEmail, password)
+        saveEmail(userId, token, newEmail, password, twitter_username)
       }}
     >
       <EmailInput
@@ -83,6 +84,7 @@ EditEmail.propTypes = {
   email: PropTypes.string.isRequired,
   newEmail: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  twitter_username: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
   submitError: PropTypes.string.isRequired,

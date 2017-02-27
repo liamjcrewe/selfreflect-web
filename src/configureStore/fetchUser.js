@@ -21,7 +21,11 @@ export default (dispatch, userId, token) => {
       // Success
       return response.json()
         .then(json => {
-          dispatch(updateUser({ id: json.id, email: json.email }))
+          dispatch(updateUser({
+            id: json.id,
+            email: json.email,
+            twitter_username: json.twitter_username
+          }))
 
           dispatch(updateIsLoading(false))
         })
