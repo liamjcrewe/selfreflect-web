@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react'
 import Home from '../containers/Home'
 import Register from './Register'
 import Login from './Login'
+import Guide from './Guide'
 import Four0Four from './Four0Four'
 import Record from './Record'
 import Account from './Account'
@@ -16,7 +17,7 @@ const getBody = selectedTab => {
     case 'register':
       return <Register />
     case 'guide':
-      return <div>guide</div>
+      return <Guide />
     case 'record':
       return <Record />
     case 'analysis':
