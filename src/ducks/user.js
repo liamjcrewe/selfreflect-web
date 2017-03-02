@@ -19,11 +19,12 @@ export const updateId = id => {
   }
 }
 
-export const updateUser = ({ id, email }) => {
+export const updateUser = ({ id, email, twitter_username }) => {
   return {
     type: UPDATE_USER,
     id,
-    email
+    email,
+    twitter_username
   }
 }
 
@@ -37,7 +38,8 @@ export const resetUser = () => {
 const initialState = {
   isLoading: false,
   id: 0,
-  email: ''
+  email: '',
+  twitter_username: ''
 }
 
 export default (state = initialState, action) => {
@@ -56,7 +58,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         id: action.id,
-        email: action.email
+        email: action.email,
+        twitter_username: action.twitter_username
       }
     case RESET_USER:
       return initialState

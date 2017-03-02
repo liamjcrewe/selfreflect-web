@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
-import AccountEdit from '../../components/Account/AccountEdit'
-import { updateSelectedEditTab } from '../../ducks/account'
+import AccountEdit from '../../../components/Account/AccountEdit'
+import { updateSelectedEditTab } from '../../../ducks/account'
 
 const mapStateToProps = state => {
   return {

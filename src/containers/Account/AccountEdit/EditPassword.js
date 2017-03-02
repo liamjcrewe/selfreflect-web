@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 
-import EditPassword from '../../components/Account/EditPassword'
-import { submitUpdatePassword } from './submitUpdate'
+import EditPassword from '../../../components/Account/AccountEdit/EditPassword'
+import { submitUpdatePassword } from '../submitUpdate'
 import {
   updateEditPasswordPassword,
   updateNewPassword,
   updateNewPasswordConfirm
-} from '../../ducks/account'
+} from '../../../ducks/account'
 
 const mapStateToProps = state => {
   return {
@@ -16,11 +16,25 @@ const mapStateToProps = state => {
     password: state.account.editPasswordPassword,
     newPassword: state.account.newPassword,
     newPasswordConfirm: state.account.newPasswordConfirm,
+    twitter_username: state.user.twitter_username,
     isLoading: state.account.editPasswordIsLoading,
     isSubmitted: state.account.editPasswordIsSubmitted,
     submitError: state.account.editPasswordSubmitError
   }
 }
+
+const savePassword = dispatch =>
+  (userId, token, email, password, newPassword, twitter_username) => {
+    submitUpdatePassword(
+      dispatch,
+      userId,
+      token,
+      email,
+      password,
+      newPassword,
+      twitter_username
+    )
+  }
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -33,16 +47,7 @@ const mapDispatchToProps = dispatch => {
     updateNewPasswordConfirm: newPassword => {
       dispatch(updateNewPasswordConfirm(newPassword))
     },
-    savePassword: (userId, token, email, password, newPassword) => {
-      submitUpdatePassword(
-        dispatch,
-        userId,
-        token,
-        email,
-        password,
-        newPassword
-      )
-    }
+    savePassword: savePassword(dispatch)
   }
 }
 

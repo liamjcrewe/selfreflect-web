@@ -1,17 +1,17 @@
 import React, { PropTypes } from 'react'
 
-import validatePassword from '../Form/Inputs/validators/password'
-import validateConfirmPassword from '../Form/Inputs/validators/confirmPassword'
+import validatePassword from '../../Form/Inputs/Password/validator'
+import validateConfirm from '../../Form/Inputs/ConfirmPassword/validator'
 
-import PasswordInput from '../Form/Inputs/PasswordInput'
-import ConfirmPasswordInput from '../Form/Inputs/ConfirmPasswordInput'
+import PasswordInput from '../../Form/Inputs/Password'
+import ConfirmPasswordInput from '../../Form/Inputs/ConfirmPassword'
 
-import SubmitMessage from '../Form/SubmitMessage'
+import SubmitMessage from '../../Form/SubmitMessage'
 
 const allInputsValid = (password, newPassword, newPasswordConfirm) => {
   return validatePassword(password)
     && validatePassword(newPassword)
-    && validateConfirmPassword(newPassword, newPasswordConfirm)
+    && validateConfirm(newPassword, newPasswordConfirm)
 }
 
 const EditEmail = ({
@@ -21,6 +21,7 @@ const EditEmail = ({
   password,
   newPassword,
   newPasswordConfirm,
+  twitter_username,
   isLoading,
   isSubmitted,
   submitError,
@@ -41,7 +42,14 @@ const EditEmail = ({
           return
         }
 
-        savePassword(userId, token, email, password, newPassword)
+        savePassword(
+          userId,
+          token,
+          email,
+          password,
+          newPassword,
+          twitter_username
+        )
       }}
     >
       <PasswordInput
@@ -101,6 +109,7 @@ EditEmail.propTypes = {
   password: PropTypes.string.isRequired,
   newPassword: PropTypes.string.isRequired,
   newPasswordConfirm: PropTypes.string.isRequired,
+  twitter_username: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
   submitError: PropTypes.string.isRequired,

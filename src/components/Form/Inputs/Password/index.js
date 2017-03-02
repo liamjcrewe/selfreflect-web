@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
-import { validClass, errorClass } from './inputValidationClasses'
-import validatePassword from './validators/password'
+import { validClass, errorClass } from '../inputValidationClasses'
+import validatePassword from './validator'
 
 const getPasswordValidatonMessage = password => {
   if (!password) {

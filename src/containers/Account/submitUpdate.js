@@ -1,6 +1,7 @@
 import { api } from '../../../config/api'
 
 import { updateUser } from '../../ducks/user'
+
 import {
   updateEditEmailIsLoading,
   updateEditEmailIsSubmitted,
@@ -15,13 +16,21 @@ import {
   updateNewPasswordConfirm
 } from '../../ducks/account'
 
+import {
+  updatePassword as updateTwitterFormPassword,
+  updateTwitterUsername,
+  updateIsLoading as updateTwitterIsLoading,
+  updateIsSubmitted as updateTwitterIsSubmitted,
+  updateSubmitError as updateTwitterSubmitError
+} from '../../ducks/twitter'
 
 export const submitUpdateEmail = (
   dispatch,
   userId,
   token,
   newEmail,
-  password
+  password,
+  twitter_username
 ) => {
   dispatch(updateEditEmailIsLoading(true))
   dispatch(updateEditEmailIsSubmitted(true))
@@ -39,7 +48,8 @@ export const submitUpdateEmail = (
     body: JSON.stringify({
       'email': newEmail,
       'oldPassword': password,
-      'newPassword': password
+      'newPassword': password,
+      twitter_username
     })
   })
     .then(response => {
@@ -66,7 +76,11 @@ export const submitUpdateEmail = (
       // Success
       return response.json()
         .then(json => {
-          dispatch(updateUser({ id: json.id, email: json.email }))
+          dispatch(updateUser({
+            id: json.id,
+            email: json.email,
+            twitter_username: json.twitter_username
+          }))
 
           dispatch(updateNewEmail(''))
           dispatch(updateEditEmailPassword(''))
@@ -89,7 +103,8 @@ export const submitUpdatePassword = (
   token,
   email,
   password,
-  newPassword
+  newPassword,
+  twitter_username
 ) => {
   dispatch(updateEditPasswordIsLoading(true))
   dispatch(updateEditPasswordIsSubmitted(true))
@@ -107,7 +122,8 @@ export const submitUpdatePassword = (
     body: JSON.stringify({
       'email': email,
       'oldPassword': password,
-      'newPassword': newPassword
+      'newPassword': newPassword,
+      twitter_username
     })
   })
     .then(response => {
@@ -134,7 +150,11 @@ export const submitUpdatePassword = (
       // Success
       return response.json()
         .then(json => {
-          dispatch(updateUser({ id: json.id, email: json.email }))
+          dispatch(updateUser({
+            id: json.id,
+            email: json.email,
+            twitter_username: json.twitter_username
+          }))
 
           dispatch(updateEditPasswordPassword(''))
           dispatch(updateNewPassword(''))
@@ -149,5 +169,78 @@ export const submitUpdatePassword = (
       ))
 
       return dispatch(updateEditPasswordIsLoading(false))
+    })
+}
+
+export const submitUpdateTwitterUsername = (
+  dispatch,
+  userId,
+  token,
+  email,
+  password,
+  twitter_username
+) => {
+  dispatch(updateTwitterIsLoading(true))
+  dispatch(updateTwitterIsSubmitted(true))
+
+  // Make sure we do not keep old submit error messages
+  dispatch(updateTwitterSubmitError(''))
+
+  return fetch(api + '/v1/users/' + userId, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({
+      'email': email,
+      'oldPassword': password,
+      'newPassword': password,
+      twitter_username
+    })
+  })
+    .then(response => {
+      // Invalid email or password
+      if (response.status === 401) {
+        return response.json()
+          .then(json => {
+            dispatch(updateTwitterIsLoading(false))
+
+            dispatch(updateTwitterSubmitError(json.message))
+          })
+      }
+
+      // Some error
+      if (response.status !== 200) {
+        return response.json()
+          .then(json => {
+            dispatch(updateTwitterIsLoading(false))
+
+            dispatch(updateTwitterSubmitError(json.error))
+          })
+      }
+
+      // Success
+      return response.json()
+        .then(json => {
+          dispatch(updateUser({
+            id: json.id,
+            email: json.email,
+            twitter_username: json.twitter_username
+          }))
+
+          dispatch(updateTwitterUsername(''))
+          dispatch(updateTwitterFormPassword(''))
+
+          dispatch(updateTwitterIsLoading(false))
+        })
+    })
+    .catch(_ => {
+      dispatch(updateTwitterSubmitError(
+        'Something went wrong. Please try again later.'
+      ))
+
+      return dispatch(updateTwitterIsLoading(false))
     })
 }

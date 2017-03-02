@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
-import validateEmail from '../Form/Inputs/validators/email'
-import validatePassword from '../Form/Inputs/validators/password'
+import validateEmail from '../../Form/Inputs/Email/validator'
+import validatePassword from '../../Form/Inputs/Password/validator'
 
-import EmailInput from '../Form/Inputs/EmailInput'
-import PasswordInput from '../Form/Inputs/PasswordInput'
+import EmailInput from '../../Form/Inputs/Email'
+import PasswordInput from '../../Form/Inputs/Password'
 
-import SubmitMessage from '../Form/SubmitMessage'
+import SubmitMessage from '../../Form/SubmitMessage'
 
 const allInputsValid = (email, password) => {
   return validateEmail(email) && validatePassword(password)
@@ -18,6 +18,7 @@ const EditEmail = ({
   email,
   newEmail,
   password,
+  twitter_username,
   isLoading,
   isSubmitted,
   submitError,
@@ -36,7 +37,7 @@ const EditEmail = ({
           return
         }
 
-        saveEmail(userId, token, newEmail, password)
+        saveEmail(userId, token, newEmail, password, twitter_username)
       }}
     >
       <EmailInput
@@ -83,6 +84,7 @@ EditEmail.propTypes = {
   email: PropTypes.string.isRequired,
   newEmail: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  twitter_username: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
   submitError: PropTypes.string.isRequired,

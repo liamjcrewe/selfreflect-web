@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
-import { validClass, errorClass } from './inputValidationClasses'
-import validateEmail from './validators/email'
+import { validClass, errorClass } from '../inputValidationClasses'
+import validateEmail from './validator'
 
 const getEmailValidationMessage = email => {
   if (!email) {
