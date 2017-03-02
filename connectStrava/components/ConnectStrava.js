@@ -1,19 +1,25 @@
 import React, { PropTypes } from 'react'
 import { parse } from 'query-string'
 
-const postToken = (code, userId) => {
+const postToken = (
+  code,
+  userId,
+  updateIsLoading,
+  updateIsSubmitted,
+  updateSubmitError
+) => {
   console.log(code)
   console.log(userId)
 }
 
-const getContent = ({
+const getContent = (
   isLoading,
   isSubmitted,
   submitError,
   updateIsLoading,
   updateIsSubmitted,
   updateSubmitError
-}) => {
+) => {
   const queryObject = parse(window.location.search)
 
   if (isLoading) {
@@ -36,7 +42,13 @@ const getContent = ({
     return 'Oops. Something went wrong.'
   }
 
-  postToken(queryObject.code, queryObject.state)
+  postToken(
+    queryObject.code,
+    queryObject.state,
+    updateIsLoading,
+    updateIsSubmitted,
+    updateSubmitError
+  )
 
   return 'Loading...'
 }
