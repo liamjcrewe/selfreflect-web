@@ -360,3 +360,27 @@
   font-size: 2rem;
   font-weight: 600;
 }
+
+/* 'Guide' page
+––––––––––––––––––––––––– */
+.guide {
+  margin-top: 80px;
+}
+
+.guide-step {
+  min-height: 20%;
+}
+
+.guide-title {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+.guide-text {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
