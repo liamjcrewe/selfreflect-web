@@ -25,7 +25,7 @@ const Strava = ({ userId }) => {
 }
 
 Strava.propTypes = {
-  userId: PropTypes.number.isRequires
+  userId: PropTypes.number.isRequired
 }
 
 export default Strava
