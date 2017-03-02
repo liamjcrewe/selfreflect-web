@@ -1,0 +1,5 @@
+module.exports = {
+  'authURL': 'https://www.strava.com/oauth/authorize',
+  'clientId': <APP_CLIENT_ID>,
+  'redirectUri': 'http://www.web.selfreflect.co.uk/connectstrava'
+}

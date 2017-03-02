@@ -330,14 +330,7 @@
 .api-connect-div {
   min-height: 250px;
   border-radius: 22px;
-}
-
-.twitter-div {
-  border: 1px solid #1da1f3;
-}
-
-.twitter-content-div {
-  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
 .api-connect-title {
@@ -345,9 +338,33 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-weight: 600;
-  background: #1da1f3;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+}
+
+.twitter-div {
+  border: 1px solid #1da1f3;
+}
+
+.twitter-title {
+  background: #1da1f3;
+}
+
+.twitter-content-div {
+  margin-top: 2rem;
+}
+
+.strava-div {
+  border: 1px solid #fc4c02;
+}
+
+.strava-title {
+  background: #fc4c02;
+}
+
+.strava-content-div {
+  text-align: center;
+  margin-top: 7rem;
 }
 
 .coming-soon-text {

@@ -25,7 +25,7 @@ const Twitter = ({
 }) => {
   return (
     <div className="api-connect-div twitter-div">
-      <div className="api-connect-title">Twitter</div>
+      <div className="api-connect-title twitter-title">Twitter</div>
 
       <div className="twitter-content-div">
         <form
