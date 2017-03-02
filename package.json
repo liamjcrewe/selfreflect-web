@@ -5,10 +5,15 @@
   "main": "build.js",
   "scripts": {
     "test": "",
-    "build": "NODE_ENV=production browserify src/main.js -t babelify -t strictify | uglifyjs -c > public/build.js",
-    "build-dev": "browserify -d src/main.js -t babelify -t strictify -o public/build.js",
+    "build:src": "NODE_ENV=production browserify src/main.js -t babelify -t strictify | uglifyjs -c > public/build.js",
+    "build-dev:src": "browserify -d src/main.js -t babelify -t strictify -o public/build.js",
+    "build:connect-strava": "NODE_ENV=production browserify connectStrava/main.js -t babelify -t strictify | uglifyjs -c > public/connect-strava-build.js",
+    "build-dev:connect-strava": "browserify -d connectStrava/main.js -t babelify -t strictify -o public/connet-strava-build.js",
+    "build": "npm run build:src; npm run build:connect-strava",
+    "build-dev": "npm run build-dev:src; npm run build-dev:connect-strava",
     "watch": "watch 'npm run build' src/",
     "watch-dev": "watch 'npm run build-dev' src/"
+
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +30,7 @@
   "dependencies": {
     "es6-promise": "^4.0.5",
     "isomorphic-fetch": "^2.2.1",
+    "query-string": "^4.3.2",
     "ramda": "^0.23.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
