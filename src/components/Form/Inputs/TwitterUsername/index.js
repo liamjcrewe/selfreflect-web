@@ -48,7 +48,7 @@ const TwitterUsernameInput = ({
 }
 
 TwitterUsernameInput.propTypes = {
-  username: PropTypes.string.isRequired,
+  twitter_username: PropTypes.string.isRequired,
   updateTwitterUsername: PropTypes.func.isRequired,
   label: PropTypes.string
 }

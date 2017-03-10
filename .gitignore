@@ -1,5 +1,6 @@
 .DS_Store
 node_modules/
 public/build.js
+public/connect-strava-build.js
 config/*.js
 npm-debug.log

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Twitter from '../../../containers/Account/AccountAPIs/Twitter'
+import Strava from '../../../containers/Account/AccountAPIs/Strava'
 import ComingSoon from './ComingSoon'
 
 export default () => {
@@ -10,8 +11,7 @@ export default () => {
         Connect existing apps
       </div>
       <Twitter />
-      <ComingSoon />
-      <ComingSoon />
+      <Strava />
       <ComingSoon />
     </div>
   )
