@@ -4,7 +4,8 @@ import Strava from '../../../components/Account/AccountAPIs/Strava'
 
 const mapStateToProps = state => {
   return {
-    userId: state.user.id
+    userId: state.user.id,
+    tokenValue: state.token.value
   }
 }
 

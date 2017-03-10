@@ -1,50 +1,42 @@
 import React, { PropTypes } from 'react'
 import { parse } from 'query-string'
 
-const postToken = (
-  code,
-  userId,
-  updateIsLoading,
-  updateIsSubmitted,
-  updateSubmitError
-) => {
-  console.log(code)
-  console.log(userId)
-}
-
 const getContent = (
   isLoading,
   isSubmitted,
   submitError,
+  postToken,
   updateIsLoading,
   updateIsSubmitted,
   updateSubmitError
 ) => {
-  const queryObject = parse(window.location.search)
+  const getParams = parse(window.location.search)
+  const state = JSON.parse(getParams.state)
 
   if (isLoading) {
     return 'Contacting SelfReflect servers...'
   }
 
   if (submitError) {
-    return 'Oops. Something went wrong. Error: {submitError}.'
+    return 'Oops. Something went wrong. Error: ' + submitError
   }
 
   if (isSubmitted) {
     return 'Success! You may now close this and head back to SelfReflect.'
   }
 
-  if (queryObject.error) {
+  if (getParams.error) {
     return 'Failed to connect your Strava account.'
   }
 
-  if (!queryObject.code || !queryObject.state) {
+  if (!getParams.code || !getParams.state) {
     return 'Oops. Something went wrong.'
   }
 
   postToken(
-    queryObject.code,
-    queryObject.state,
+    getParams.code,
+    state.userId,
+    state.tokenValue,
     updateIsLoading,
     updateIsSubmitted,
     updateSubmitError
@@ -57,6 +49,7 @@ const ConnectStrava = ({
   isLoading,
   isSubmitted,
   submitError,
+  postToken,
   updateIsLoading,
   updateIsSubmitted,
   updateSubmitError
@@ -67,6 +60,7 @@ const ConnectStrava = ({
         isLoading,
         isSubmitted,
         submitError,
+        postToken,
         updateIsLoading,
         updateIsSubmitted,
         updateSubmitError
@@ -79,6 +73,7 @@ ConnectStrava.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
   submitError: PropTypes.string.isRequired,
+  postToken: PropTypes.func.isRequired,
   updateIsLoading: PropTypes.func.isRequired,
   updateIsSubmitted: PropTypes.func.isRequired,
   updateSubmitError: PropTypes.func.isRequired

@@ -1,22 +1,27 @@
 import React, { PropTypes } from 'react'
 import { authURL, clientId, redirectUri } from '../../../../config/strava'
 
-const onClickConnect = userId => () => {
+const onClickConnect = (userId, tokenValue) => () => {
+  const state = { userId, tokenValue }
+
   window.open(authURL +
     '?client_id=' + clientId +
-    '&state=' + userId +
+    '&state=' + JSON.stringify(state) +
     '&response_type=code' +
     '&redirect_uri=' + redirectUri
   )
 }
 
-const Strava = ({ userId }) => {
+const Strava = ({ userId, tokenValue }) => {
   return (
     <div className="api-connect-div strava-div">
       <div className="api-connect-title strava-title">Strava</div>
 
       <div className="strava-content-div">
-        <button className="button-primary" onClick={onClickConnect(userId)}>
+        <button
+          className="button-primary"
+          onClick={onClickConnect(userId, tokenValue)}
+        >
           Connect Strava
         </button>
       </div>
@@ -25,7 +30,8 @@ const Strava = ({ userId }) => {
 }
 
 Strava.propTypes = {
-  userId: PropTypes.number.isRequired
+  userId: PropTypes.number.isRequired,
+  tokenValue: PropTypes.string.isRequired
 }
 
 export default Strava
