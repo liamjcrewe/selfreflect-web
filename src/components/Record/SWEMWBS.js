@@ -26,6 +26,13 @@ const SWEMWBS = ({
       />
     ), questions)}
 
+    <div className="u-full-width submit-message">
+      <SubmitMessage
+        isLoading={isLoading}
+        isSubmitted={isSubmitted}
+        submitError={submitError}
+      />
+    </div>
 
     <div className="u-full-width SWEMWBS-buttons-div">
       <button className="SWEMWBS-button" onClick={resetScores}>Clear</button>
@@ -36,14 +43,6 @@ const SWEMWBS = ({
       >
         Submit
       </button>
-    </div>
-
-    <div className="u-full-width submit-message">
-      <SubmitMessage
-        isLoading={isLoading}
-        isSubmitted={isSubmitted}
-        submitError={submitError}
-      />
     </div>
   </div>
 )
