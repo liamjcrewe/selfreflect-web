@@ -401,3 +401,38 @@
   margin-top: 1rem;
   text-align: center;
 }
+
+/* 'Analysis' page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.sources-title {
+  margin-top: 80px;
+  text-align: center;
+  padding-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.source-title {
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.source-label {
+  /* Default font weight */
+  font-weight: 400;
+}
+
+.source-checkboxes {
+  text-align: center;
+}
+
+.source-checkbox {
+  margin-left: 20px;
+}
+
+.generate-button-div {
+  margin-top: 1rem;
+  text-align: center;
+}
