@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { updateAverageWellbeingPerDay } from '../../../ducks/analysis'
-import Wellbeing from '../../../components/Analysis/Sources/Wellbeing'
+import SelfReflect from '../../../components/Analysis/Sources/SelfReflect'
 
 const mapStateToProps = state => {
   return {
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Wellbeing)
+)(SelfReflect)

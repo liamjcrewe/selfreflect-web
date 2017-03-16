@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 
-const Wellbeing = ({ isSelected, updateIsSelected }) => (
+const SelfReflect = ({ isSelected, updateIsSelected }) => (
   <div className="four columns">
     <div className="source-title">
-      Wellbeing
+      SelfReflect
     </div>
     <div className="source-checkboxes">
       <label className="source-label">
@@ -20,9 +20,9 @@ const Wellbeing = ({ isSelected, updateIsSelected }) => (
   </div>
 )
 
-Wellbeing.propTypes = {
+SelfReflect.propTypes = {
   isSelected: PropTypes.bool.isRequired,
   updateIsSelected: PropTypes.func.isRequired
 }
 
-export default Wellbeing
+export default SelfReflect
