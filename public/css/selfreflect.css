@@ -404,18 +404,19 @@
 
 /* 'Analysis' page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.sources-title {
+.sources-title-div {
   margin-top: 80px;
   text-align: center;
   padding-bottom: 3rem;
-  font-size: 2rem;
+}
+
+.sources-title {
   font-weight: 600;
 }
 
 .source-title {
   align-items: center;
   text-align: center;
-  font-size: 2rem;
   font-weight: 600;
 }
 
