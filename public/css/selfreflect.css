@@ -437,3 +437,12 @@
   margin-top: 1rem;
   text-align: center;
 }
+
+.graph-div {
+  margin-top: 3rem;
+}
+
+.graph-loading-message {
+  text-align: center;
+  font-weight: 600;
+}

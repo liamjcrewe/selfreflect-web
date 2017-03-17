@@ -11,7 +11,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     generateGraph: sources => {
-      // @TODO: Fetch and process data, then update state to render graph
+      /* @TODO:
+       *   - Fetch data
+       *   - Process data to format required, including merging data from same
+       *     dates
+       *   - Update state to render graph
+       */
       console.log(sources)
     }
   }
