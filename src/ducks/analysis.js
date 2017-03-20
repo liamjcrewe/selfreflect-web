@@ -1,7 +1,7 @@
 // Constants
 const UPDATE_AVERAGE_WELLBEING_PER_DAY = 'UPDATE_AVERAGE_WELLBEING_PER_DAY'
 const UPDATE_NUM_TWEETS_PER_DAY = 'UPDATE_NUM_TWEETS_PER_DAY'
-const UPDATE_TIME_EXERCISED_PER_DAY = 'UPDATE_TIME_EXERCISED_PER_DAY'
+const UPDATE_DISTANCE_EXERCISED_PER_DAY = 'UPDATE_DISTANCE_EXERCISED_PER_DAY'
 const UPDATE_ANALYSIS_IS_SUBMITTED = 'UPDATE_ANALYSIS_IS_SUBMITTED'
 const UPDATE_ANALYSIS_IS_LOADING = 'UPDATE_ANALYSIS_IS_LOADING'
 
@@ -20,9 +20,9 @@ export const updateNumTweetsPerDay = isSelected => {
   }
 }
 
-export const updateTimeExercisedPerDay = isSelected => {
+export const updateDistanceExercisedPerDay = isSelected => {
   return {
-    type: UPDATE_TIME_EXERCISED_PER_DAY,
+    type: UPDATE_DISTANCE_EXERCISED_PER_DAY,
     isSelected
   }
 }
@@ -46,9 +46,58 @@ const initialState = {
   sources: {
     averageWellbeingPerDay: false,
     numTweetsPerDay: false,
-    timeExercisedPerDay: false
+    distanceExercisedPerDay: false
   },
-  data: [],
+  data: [
+    {
+      timestamp: 1492642800000,
+      totalWellbeing: 75.59,
+      numWellbeings: 4,
+      averageWellbeing: 18.8975,
+      numTweets: 1,
+      distanceExercised: 11
+    },
+    {
+      timestamp: 1492902000000,
+      totalWellbeing: 75.59,
+      numWellbeings: 4,
+      averageWellbeing: 8.8975,
+      numTweets: 2,
+      distanceExercised: 22
+    },
+    {
+      timestamp: 1492988400000,
+      totalWellbeing: 75.59,
+      numWellbeings: 4,
+      averageWellbeing: 10.8975,
+      numTweets: 3,
+      distanceExercised: 33
+    },
+    {
+      timestamp: 1493334000000,
+      totalWellbeing: 75.59,
+      numWellbeings: 4,
+      averageWellbeing: 18.8975,
+      numTweets: 4,
+      distanceExercised: 44
+    },
+    {
+      timestamp: 1493420400000,
+      totalWellbeing: 75.59,
+      numWellbeings: 4,
+      averageWellbeing: 2.8975,
+      numTweets: 5,
+      distanceExercised: 55
+    },
+    {
+      timestamp: 1493593200000,
+      totalWellbeing: 75.59,
+      numWellbeings: 4,
+      averageWellbeing: 7.8975,
+      numTweets: 6,
+      distanceExercised: 66
+    }
+  ],
   isSubmitted: false,
   isLoading: false
 }
@@ -71,12 +120,12 @@ export default (state = initialState, action) => {
           numTweetsPerDay: action.isSelected
         }
       }
-    case UPDATE_TIME_EXERCISED_PER_DAY:
+    case UPDATE_DISTANCE_EXERCISED_PER_DAY:
       return {
         ...state,
         sources: {
           ...state.sources,
-          timeExercisedPerDay: action.isSelected
+          distanceExercisedPerDay: action.isSelected
         }
       }
     case UPDATE_ANALYSIS_IS_SUBMITTED:

@@ -440,6 +440,8 @@
 
 .graph-div {
   margin-top: 3rem;
+  text-align: center;
+  min-height: 560px;
 }
 
 .graph-loading-message {

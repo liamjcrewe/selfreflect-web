@@ -7,9 +7,9 @@ const Strava = ({ isSelected, updateIsSelected }) => (
     </div>
     <div className="source-checkboxes">
       <label className="source-label">
-        Time exercised per day:
+        Distance exercised per day:
         <input
-          name="time-exercised-per-day"
+          name="distance-exercised-per-day"
           type="checkbox"
           className="source-checkbox"
           checked={isSelected}

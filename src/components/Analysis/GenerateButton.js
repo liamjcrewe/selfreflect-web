@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 
-const GenerateButton = ({ sources, generateGraph }) => (
+const GenerateButton = ({ sources, userId, token, generateGraph }) => (
   <div className="generate-button-div">
     <button
       className="button-primary"
-      onClick={() => generateGraph(sources)}
+      onClick={() => generateGraph(sources, userId, token)}
     >
       Generate
     </button>
@@ -15,8 +15,10 @@ GenerateButton.propTypes = {
   sources: PropTypes.shape({
     averageWellbeingPerDay: PropTypes.bool.isRequired,
     numTweetsPerDay: PropTypes.bool.isRequired,
-    timeExercisedPerDay: PropTypes.bool.isRequired
+    distanceExercisedPerDay: PropTypes.bool.isRequired
   }).isRequired,
+  userId: PropTypes.number.isRequired,
+  token: PropTypes.string.isRequired,
   generateGraph: PropTypes.func.isRequired
 }
 

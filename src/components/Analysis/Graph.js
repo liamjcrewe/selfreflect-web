@@ -1,24 +1,27 @@
 import React, { PropTypes } from 'react'
-import { map, keys } from 'ramda'
 import { LineChart } from 'react-d3-basic'
+import { map, keys } from 'ramda'
 
 const getChartSeries = sources => {
   return map(source => {
     switch (source) {
       case 'averageWellbeingPerDay':
         return {
-          field: 'averageWellbeingPerDay',
-          name: 'Average wellbeing per day'
+          field: 'averageWellbeing',
+          name: 'Average wellbeing per day (SelfReflect)',
+          color: '#555555'
         }
       case 'numTweetsPerDay':
         return {
-          field: 'numTweetsPerDay',
-          name: 'Number of tweets per day'
+          field: 'numTweets',
+          name: 'Number of tweets per day (Twitter)',
+          color: '#1da1f3'
         }
-      case 'timeExercisedPerDay':
+      case 'distanceExercisedPerDay':
         return {
-          field: 'timeExercisedPerDay',
-          name: 'Time exercised per day'
+          field: 'distanceExercised',
+          name: 'Distance exercised per day (Strava)',
+          color: '#fc4c02'
         }
       default:
         return
@@ -27,19 +30,19 @@ const getChartSeries = sources => {
 }
 
 const generateGraph = (sources, data) => {
-  const margins = {left: 100, right: 100, top: 100, bottom: 100}
   const chartSeries = getChartSeries(sources)
 
   return (
-    <LineChart
-      data={data}
-      width={700}
-      height={300}
-      margins={margins}
-      chartSeries={chartSeries}
-      x={data => data.date} // NOTE: data.date should be a unix timestamp
-      xScale='date'
-    />
+    <div>
+      <LineChart
+        data={data}
+        chartSeries={chartSeries}
+        x={data => {
+          return new Date(data.timestamp)
+        }}
+        xScale='time'
+      />
+    </div>
   )
 }
 
