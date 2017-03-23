@@ -18,7 +18,7 @@ const baseDataNode = {
   distanceExercised: 0
 }
 
-const processWellbeingData = (data, results) => {
+const processAverageWellbeing = (data, results) => {
   // Reverse so that results are in ascending order
   const ascendingResults = reverse(results)
 
@@ -83,7 +83,7 @@ const fetchAverageWellbeingPerDay = (data, userId, token, next) => {
       // Success
       return response.json()
         .then(json => {
-          next(processWellbeingData(data, json.results))
+          next(processAverageWellbeing(data, json.results))
         })
     })
     .catch(_ => {
