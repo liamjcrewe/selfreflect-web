@@ -4,6 +4,7 @@ const UPDATE_NUM_TWEETS_PER_DAY = 'UPDATE_NUM_TWEETS_PER_DAY'
 const UPDATE_DISTANCE_EXERCISED_PER_DAY = 'UPDATE_DISTANCE_EXERCISED_PER_DAY'
 const UPDATE_ANALYSIS_IS_SUBMITTED = 'UPDATE_ANALYSIS_IS_SUBMITTED'
 const UPDATE_ANALYSIS_IS_LOADING = 'UPDATE_ANALYSIS_IS_LOADING'
+const UPDATE_GRAPH_DATA = 'UPDATE_GRAPH_DATA'
 
 // Actions
 export const updateAverageWellbeingPerDay = isSelected => {
@@ -41,6 +42,13 @@ export const updateIsLoading = isLoading => {
   }
 }
 
+export const updateGraphData = data => {
+  return {
+    type: UPDATE_GRAPH_DATA,
+    data
+  }
+}
+
 // Reducer
 const initialState = {
   sources: {
@@ -48,56 +56,7 @@ const initialState = {
     numTweetsPerDay: false,
     distanceExercisedPerDay: false
   },
-  data: [
-    {
-      timestamp: 1492642800000,
-      totalWellbeing: 75.59,
-      numWellbeings: 4,
-      averageWellbeing: 18.8975,
-      numTweets: 1,
-      distanceExercised: 11
-    },
-    {
-      timestamp: 1492902000000,
-      totalWellbeing: 75.59,
-      numWellbeings: 4,
-      averageWellbeing: 8.8975,
-      numTweets: 2,
-      distanceExercised: 22
-    },
-    {
-      timestamp: 1492988400000,
-      totalWellbeing: 75.59,
-      numWellbeings: 4,
-      averageWellbeing: 10.8975,
-      numTweets: 3,
-      distanceExercised: 33
-    },
-    {
-      timestamp: 1493334000000,
-      totalWellbeing: 75.59,
-      numWellbeings: 4,
-      averageWellbeing: 18.8975,
-      numTweets: 4,
-      distanceExercised: 44
-    },
-    {
-      timestamp: 1493420400000,
-      totalWellbeing: 75.59,
-      numWellbeings: 4,
-      averageWellbeing: 2.8975,
-      numTweets: 5,
-      distanceExercised: 55
-    },
-    {
-      timestamp: 1493593200000,
-      totalWellbeing: 75.59,
-      numWellbeings: 4,
-      averageWellbeing: 7.8975,
-      numTweets: 6,
-      distanceExercised: 66
-    }
-  ],
+  data: [],
   isSubmitted: false,
   isLoading: false
 }
@@ -137,6 +96,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.isLoading
+      }
+    case UPDATE_GRAPH_DATA:
+      return {
+        ...state,
+        data: action.data
       }
     default:
       return state

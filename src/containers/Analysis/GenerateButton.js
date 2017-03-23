@@ -5,7 +5,8 @@ import { api } from '../../../config/api'
 import GenerateButton from '../../components/Analysis/GenerateButton'
 import {
   updateIsLoading,
-  updateIsSubmitted
+  updateIsSubmitted,
+  updateGraphData
 } from '../../ducks/analysis'
 
 const baseDataNode = {
@@ -26,7 +27,7 @@ const processWellbeingData = (data, results) => {
   for (let i = 0; i < ascendingResults.length; i++) {
     const dataNode = ascendingResults[i]
 
-    const date = new Date(dataNode.date_recorded)
+    const date = new Date(dataNode.date_recorded.substr(0, 10))
     const timestamp = date.valueOf() // Unix timestamp
 
     // Check if this timestamp (valueOf) is already in data
@@ -82,9 +83,7 @@ const fetchAverageWellbeingPerDay = (data, userId, token, next) => {
       // Success
       return response.json()
         .then(json => {
-          data['averageWellbeingPerDay'] = processWellbeingData(data, json.results)
-
-          next(data)
+          next(processWellbeingData(data, json.results))
         })
     })
     .catch(_ => {
@@ -107,7 +106,7 @@ const generateGraph = (dispatch, sources, userId, token) => {
   return fetchAverageWellbeingPerDay([], userId, token, data => {
     dispatch(updateIsLoading(false))
 
-    // dispatch(updateGraphData(data))
+    dispatch(updateGraphData(data))
   })
 
   /* @TODO:
