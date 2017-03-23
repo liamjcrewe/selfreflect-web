@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { reverse, propEq, findIndex } from 'ramda'
+import { propEq, findIndex, sortBy, prop } from 'ramda'
 
 import { api } from '../../../config/api'
 import GenerateButton from '../../components/Analysis/GenerateButton'
@@ -19,14 +19,12 @@ const baseDataNode = {
 }
 
 const processAverageWellbeing = (data, results) => {
-  // Reverse so that results are in ascending order
-  const ascendingResults = reverse(results)
-
   const timestampMatches = timestamp => propEq('timestamp', timestamp)
 
-  for (let i = 0; i < ascendingResults.length; i++) {
-    const dataNode = ascendingResults[i]
+  for (let i = 0; i < results.length; i++) {
+    const dataNode = results[i]
 
+    // Don't want time included, only date
     const date = new Date(dataNode.date_recorded.substr(0, 10))
     const timestamp = date.valueOf() // Unix timestamp
 
@@ -55,7 +53,7 @@ const processAverageWellbeing = (data, results) => {
   for (let i = 0; i < data.length; i++) {
     const numWellbeings = data[i].numWellbeings
 
-    if (numWellbeings === 0) {
+    if (!numWellbeings) {
       continue
     }
 
@@ -65,7 +63,11 @@ const processAverageWellbeing = (data, results) => {
   return data
 }
 
-const fetchAverageWellbeingPerDay = (data, userId, token, next) => {
+const fetchAverageWellbeingPerDay = (shouldRun, data, userId, token, next) => {
+  if (!shouldRun) {
+    return next(data)
+  }
+
   return fetch(api + '/v1/users/' + userId + '/wellbeings?limit=200', {
     method: 'GET',
     headers: {
@@ -91,22 +93,127 @@ const fetchAverageWellbeingPerDay = (data, userId, token, next) => {
     })
 }
 
-const fetchNumTweetsPerDay = (data, userId, token, next) => {
+const processNumTweets = (data, results) => {
+  const timestampMatches = timestamp => propEq('timestamp', timestamp)
 
+  for (let i = 0; i < results.length; i++) {
+    const dataNode = results[i]
+
+    const created = dataNode.created_at
+
+    // Don't want time included, only day & month and year
+    const date = new Date(
+      created.substr(0, 10) + ' ' + created.substr(created.length - 4, 4)
+    )
+
+    const timestamp = date.valueOf() // Unix timestamp
+
+    // Check if this timestamp (valueOf) is already in data
+    // i.e. Multiple recordings from one day
+    const existingIndex = findIndex(timestampMatches(timestamp))(data)
+
+    // If node already exists, update it
+    if (existingIndex !== -1) {
+      data[existingIndex].numTweets++
+
+      continue
+    }
+
+    // Else create node
+    data.push({
+      ...baseDataNode,
+      timestamp: timestamp,
+      numTweets: 1
+    })
+  }
+
+  return data
 }
 
-const fetchTimeExercisedPerDay = (data, userId, token, next) => {
+const fetchNumTweetsPerDay = (shouldRun, data, userId, token, next) => {
+  if (!shouldRun) {
+    return next(data)
+  }
 
+  return fetch(api + '/v1/users/' + userId + '/tweets', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    }
+  })
+    .then(response => {
+      // Some error
+      if (response.status !== 200) {
+        return next(data)
+      }
+
+      // Success
+      return response.json()
+        .then(json => {
+          next(processNumTweets(data, json))
+        })
+    })
+    .catch(_ => {
+      return next(data)
+    })
+}
+
+const processTimeExercised = (data, results) => {
+
+
+  return data
+}
+
+const fetchTimeExercisedPerDay = (shouldRun, data, userId, token, next) => {
+  if (!shouldRun) {
+    return next(data)
+  }
+
+  return fetch(api + '/v1/users/' + userId + '/strava-data', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    }
+  })
+    .then(response => {
+      // Some error
+      if (response.status !== 200) {
+        return next(data)
+      }
+
+      // Success
+      return response.json()
+        .then(json => {
+          next(processTimeExercised(data, json))
+        })
+    })
+    .catch(_ => {
+      return next(data)
+    })
 }
 
 const generateGraph = (dispatch, sources, userId, token) => {
   dispatch(updateIsLoading(true))
   dispatch(updateIsSubmitted(true))
 
-  return fetchAverageWellbeingPerDay([], userId, token, data => {
-    dispatch(updateIsLoading(false))
+  const sortByDate = sortBy(prop('timestamp'))
 
-    dispatch(updateGraphData(data))
+  const isWellbeing = sources.averageWellbeingPerDay
+  const isNumTweets = sources.numTweetsPerDay
+  const isDistanceExercised = sources.distanceExercisedPerDay
+
+  return fetchAverageWellbeingPerDay(isWellbeing, [], userId, token, data => {
+    fetchNumTweetsPerDay(isNumTweets, data, userId, token, data => {
+      data = sortByDate(data)
+
+      dispatch(updateIsLoading(false))
+
+      dispatch(updateGraphData(data))
+    })
   })
 
   /* @TODO:
