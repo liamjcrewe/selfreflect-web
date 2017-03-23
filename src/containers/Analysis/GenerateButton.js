@@ -165,6 +165,7 @@ const processDistanceExercised = (data, results) => {
 
   for (let i = 0; i < results.length; i++) {
     const dataNode = results[i]
+    const distanceInKm = dataNode.distance / 1000
 
     // Don't want time included, only date
     const date = new Date(dataNode.start_date.substr(0, 10))
@@ -177,7 +178,7 @@ const processDistanceExercised = (data, results) => {
 
     // If node already exists, update it
     if (existingIndex !== -1) {
-      data[existingIndex].distanceExercised += (dataNode.distance / 1000)
+      data[existingIndex].distanceExercised += distanceInKm
 
       continue
     }
@@ -186,7 +187,7 @@ const processDistanceExercised = (data, results) => {
     data.push({
       ...baseDataNode,
       timestamp: timestamp,
-      distanceExercised: (dataNode.distance / 1000)
+      distanceExercised: distanceInKm
     })
   }
 
