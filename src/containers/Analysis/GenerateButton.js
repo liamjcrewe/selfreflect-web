@@ -15,7 +15,7 @@ const baseDataNode = {
   numWellbeings: 0,
   averageWellbeing: 0,
   numTweets: 0,
-  distanceExercised: 0
+  distanceExercised: 0.0
 }
 
 const processAverageWellbeing = (data, results) => {
@@ -160,13 +160,40 @@ const fetchNumTweetsPerDay = (shouldRun, data, userId, token, next) => {
     })
 }
 
-const processTimeExercised = (data, results) => {
+const processDistanceExercised = (data, results) => {
+  const timestampMatches = timestamp => propEq('timestamp', timestamp)
 
+  for (let i = 0; i < results.length; i++) {
+    const dataNode = results[i]
+
+    // Don't want time included, only date
+    const date = new Date(dataNode.start_date.substr(0, 10))
+
+    const timestamp = date.valueOf() // Unix timestamp
+
+    // Check if this timestamp (valueOf) is already in data
+    // i.e. Multiple recordings from one day
+    const existingIndex = findIndex(timestampMatches(timestamp))(data)
+
+    // If node already exists, update it
+    if (existingIndex !== -1) {
+      data[existingIndex].distanceExercised += (dataNode.distance / 1000)
+
+      continue
+    }
+
+    // Else create node
+    data.push({
+      ...baseDataNode,
+      timestamp: timestamp,
+      distanceExercised: (dataNode.distance / 1000)
+    })
+  }
 
   return data
 }
 
-const fetchTimeExercisedPerDay = (shouldRun, data, userId, token, next) => {
+const fetchDistanceExercisedPerDay = (shouldRun, data, userId, token, next) => {
   if (!shouldRun) {
     return next(data)
   }
@@ -188,7 +215,7 @@ const fetchTimeExercisedPerDay = (shouldRun, data, userId, token, next) => {
       // Success
       return response.json()
         .then(json => {
-          next(processTimeExercised(data, json))
+          next(processDistanceExercised(data, json))
         })
     })
     .catch(_ => {
@@ -204,24 +231,19 @@ const generateGraph = (dispatch, sources, userId, token) => {
 
   const isWellbeing = sources.averageWellbeingPerDay
   const isNumTweets = sources.numTweetsPerDay
-  const isDistanceExercised = sources.distanceExercisedPerDay
+  const isDistance = sources.distanceExercisedPerDay
 
   return fetchAverageWellbeingPerDay(isWellbeing, [], userId, token, data => {
     fetchNumTweetsPerDay(isNumTweets, data, userId, token, data => {
-      data = sortByDate(data)
+      fetchDistanceExercisedPerDay(isDistance, data, userId, token, data => {
+        data = sortByDate(data)
 
-      dispatch(updateIsLoading(false))
+        dispatch(updateIsLoading(false))
 
-      dispatch(updateGraphData(data))
+        dispatch(updateGraphData(data))
+      })
     })
   })
-
-  /* @TODO:
-   *   - Fetch data
-   *   - Process data to format required, including merging data from same
-   *      dates
-   *   - Update state to render graph
-   */
 }
 
 const mapStateToProps = state => {
