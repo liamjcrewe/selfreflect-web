@@ -11,6 +11,12 @@ $ npm install
 $ npm run build
 ```
 
+Then, create the following config files:
+
+config/api.js
+config/strava.js
+Example config files have been included in the config directory for all of these.
+
 To run a http server locally, to access the application, you can run:
 
 ```sh
