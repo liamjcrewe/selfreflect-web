@@ -8,25 +8,38 @@ Run the following commands:
 $ git clone https://github.com/liamjcrewe/selfreflect-web
 $ cd selfreflect-web
 $ npm install
-$ npm build
+$ npm run build
 ```
 
-To run a http server locally, to access the application, you can do:
+To run a http server locally, to access the application, you can run:
 
 ```sh
 $ npm install -g http-server
 $ http-server public/
 ```
 
-To rebuild javascript as you make changes, instead of ```npm run build``` you can run:
+## Other npm scripts
+
+### Build in development mode
+
+Run ```npm run build-dev``` to enable debugging.
+
+### Watch for JavaScript changes
+
+Run ```npm run watch``` to rebuild JavaScript as you make changes (in ```src/``` directory). You can also run ```npm run watch-dev``` to enable debugging.
+
+### ConnectStrava app
+
+This project actually contains two apps: one in ```src/``` (the main app), and one in ```connectStrava/``` (handles redirect when connecting to Strava). These are both built when using the build and build-dev commands, but can be built individually using:
 
 ```sh
-$ npm run watch
+$ npm build:src
+$ npm build-dev:src
 ```
 
-Npm commands (to be explained in more detail soon):
-* build
-* build-dev
-* watch
-* watch-dev
+and
 
+```sh
+$ npm build:connect-strava
+$ npm build-dev:connect-strava
+```

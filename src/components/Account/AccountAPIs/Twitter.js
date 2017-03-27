@@ -45,7 +45,11 @@ const Twitter = ({
             updateTwitterUsername={updateTwitterUsername}
           />
 
-          <PasswordInput password={password} updatePassword={updatePassword} />
+          <PasswordInput
+            password={password}
+            updatePassword={updatePassword}
+            label="SelfReflect password"
+          />
 
           <div className="account-buttons-div">
             <button

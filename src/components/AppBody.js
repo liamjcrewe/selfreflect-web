@@ -6,6 +6,7 @@ import Login from './Login'
 import Guide from './Guide'
 import Four0Four from './Four0Four'
 import Record from './Record'
+import Analysis from './Analysis'
 import Account from './Account'
 
 const getBody = selectedTab => {
@@ -21,7 +22,7 @@ const getBody = selectedTab => {
     case 'record':
       return <Record />
     case 'analysis':
-      return <div>analysis</div>
+      return <Analysis />
     case 'account':
       return <Account />
     default:

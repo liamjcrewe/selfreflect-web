@@ -379,7 +379,7 @@
 }
 
 /* 'Guide' page
-––––––––––––––––––––––––– */
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .guide {
   margin-top: 80px;
 }
@@ -400,4 +400,51 @@
   width: 100%;
   margin-top: 1rem;
   text-align: center;
+}
+
+/* 'Analysis' page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.sources-title-div {
+  margin-top: 80px;
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.sources-title {
+  font-weight: 600;
+}
+
+.source-title {
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+}
+
+.source-label {
+  /* Default font weight */
+  font-weight: 400;
+}
+
+.source-checkboxes {
+  text-align: center;
+}
+
+.source-checkbox {
+  margin-left: 20px;
+}
+
+.generate-button-div {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.graph-div {
+  margin-top: 3rem;
+  text-align: center;
+  min-height: 560px;
+}
+
+.graph-loading-message {
+  text-align: center;
+  font-weight: 600;
 }
