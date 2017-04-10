@@ -1,5 +1,9 @@
 # SelfReflect Web
 
+SelfReflect is a project developed as part of a final year BSc Computer Science project at the University of Bath. It is an application to allow users to record their mental health wellbeing, with the goal to allow them to map this wellbeing to other data about them (via external APIs). This will allow users to investigate the relationships between their mental health wellbeing, social media activity (Twitter) and exercise information (Strava).
+
+This specific project serves as the frontend to SelfReflect. The back end API (SelfReflect API) is also required; its documentation and setup guide can be found [here](https://github.com/liamjcrewe/selfreflect-api).
+
 ## Get started
 
 Run the following commands:
