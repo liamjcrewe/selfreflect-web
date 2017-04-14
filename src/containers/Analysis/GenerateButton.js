@@ -106,7 +106,8 @@ const processNumTweets = (data, results) => {
       created.substr(0, 10) + ' ' + created.substr(created.length - 4, 4)
     )
 
-    const timestamp = date.valueOf() // Unix timestamp
+    // Unix timestamp. Adjust for local time as this is how others are formatted
+    const timestamp = date.valueOf() + 3600000
 
     // Check if this timestamp (valueOf) is already in data
     // i.e. Multiple recordings from one day
